@@ -1,0 +1,239 @@
+# Copyright 2018-2020 the original author or authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+api = "0.7"
+
+[buildpack]
+  description = "A Cloud Native Buildpack that contributes Apache Tomee and Process Types for WARs"
+  homepage = "https://github.com/garethjevans/apache-tomee"
+  id = "garethjevans/apache-tomee"
+  keywords = ["java", "tomee", "war"]
+  name = "GarethJEvans' Apache Tomee Buildpack"
+  sbom-formats = ["application/vnd.cyclonedx+json", "application/vnd.syft+json"]
+  version = "{{.version}}"
+
+  [[buildpack.licenses]]
+    type = "Apache-2.0"
+    uri = "https://github.com/garethjevans/apache-tomee/blob/main/LICENSE"
+
+[metadata]
+  include-files = ["LICENSE", "NOTICE", "README.md", "bin/build", "bin/detect", "bin/helper", "bin/main", "buildpack.toml", "resources/context.xml", "resources/context-with-datasource.xml", "resources/logging.properties", "resources/server.xml", "resources/web.xml"]
+  pre-package = "scripts/build.sh"
+
+  [[metadata.configurations]]
+    description = "the Tomee access logging state"
+    launch = true
+    name = "BPL_TOMEE_ACCESS_LOGGING_ENABLED"
+
+  [[metadata.configurations]]
+    default = "false"
+    description = "enable the managed datasource as part of the launch helper"
+    launch = true
+    name = "BPL_TOMEE_MANAGED_DATASOURCE_ENABLED"
+
+  [[metadata.configurations]]
+    default = "jdbc/datasource"
+    description = "the name of the managed datasource to create"
+    launch = true
+    name = "BPL_TOMEE_MANAGED_DATASOURCE_NAME"
+
+  [[metadata.configurations]]
+    default = "Container"
+    description = "the managed datasource auth"
+    launch = true
+    name = "BPL_TOMEE_MANAGED_DATASOURCE_AUTH"
+
+  [[metadata.configurations]]
+    default = "javax.sql.DataSource"
+    description = "the managed datasource type"
+    launch = true
+    name = "BPL_TOMEE_MANAGED_DATASOURCE_TYPE"
+
+  [[metadata.configurations]]
+    description = "the managed datasource driver"
+    launch = true
+    name = "BPL_TOMEE_MANAGED_DATASOURCE_DRIVER"
+
+  [[metadata.configurations]]
+    description = "the managed datasource username"
+    launch = true
+    name = "BPL_TOMEE_MANAGED_DATASOURCE_USERNAME"
+
+  [[metadata.configurations]]
+    description = "the managed datasoure password"
+    launch = true
+    name = "BPL_TOMEE_MANAGED_DATASOURCE_PASSWORD"
+
+  [[metadata.configurations]]
+    default = "20"
+    description = "the managed datasource maxTotal"
+    launch = true
+    name = "BPL_TOMEE_MANAGED_DATASOURCE_MAX_TOTAL"
+
+  [[metadata.configurations]]
+    default = "10"
+    description = "the managed datasource maxIdle"
+    launch = true
+    name = "BPL_TOMEE_MANAGED_DATASOURCE_MAX_IDLE"
+
+  [[metadata.configurations]]
+    default = "-1"
+    description = "the managed datasource maxWaitMillis"
+    launch = true
+    name = "BPL_TOMEE_MANAGED_DATASOURCE_MAX_WAIT_MILLIS"
+
+  [[metadata.configurations]]
+    build = true
+    description = "the application context path"
+    name = "BP_TOMEE_CONTEXT_PATH"
+
+  [[metadata.configurations]]
+    build = true
+    description = "the SHA256 hash of the external Tomee configuration archive"
+    name = "BP_TOMEE_EXT_CONF_SHA256"
+
+  [[metadata.configurations]]
+    build = true
+    default = "0"
+    description = "the number of directory components to strip from the external Tomee configuration archive"
+    name = "BP_TOMEE_EXT_CONF_STRIP"
+
+  [[metadata.configurations]]
+    build = true
+    description = "the download location of the external Tomee configuration"
+    name = "BP_TOMEE_EXT_CONF_URI"
+
+  [[metadata.configurations]]
+    build = true
+    description = "the version of the external Tomee configuration"
+    name = "BP_TOMEE_EXT_CONF_VERSION"
+
+  [[metadata.configurations]]
+    build = true
+    default = "9.*"
+    description = "the Tomee version"
+    name = "BP_TOMEE_VERSION"
+
+  [[metadata.configurations]]
+    build = true
+    default = "false"
+    description = "Add the postgres jar to the lib dir"
+    name = "BP_TOMEE_INCLUDE_POSTGRES_JAR"
+
+  [[metadata.dependencies]]
+    cpes = ["cpe:2.3:a:apache:tomee:8.5.75:*:*:*:*:*:*:*"]
+    id = "tomee"
+    name = "Apache Tomee"
+    purl = "pkg:generic/apache-tomee@8.5.75"
+    sha256 = "22c538f628ed03bd15b73951c73b6124a43e5148e8c6ba14cd890f16493a36d8"
+    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    uri = "https://archive.apache.org/dist/tomee/tomee-8/v8.5.75/bin/apache-tomee-8.5.75.tar.gz"
+    version = "8.5.75"
+
+    [[metadata.dependencies.licenses]]
+      type = "Apache-2.0"
+      uri = "https://www.apache.org/licenses/"
+
+  [[metadata.dependencies]]
+    cpes = ["cpe:2.3:a:apache:tomee:9.0.58:*:*:*:*:*:*:*"]
+    id = "tomee"
+    name = "Apache Tomee"
+    purl = "pkg:generic/apache-tomee@9.0.58"
+    sha256 = "a7895a9f425dd57fba5a1e8685d43754d3ecfe05de80e93bfd245ca8313cc7c1"
+    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    uri = "https://archive.apache.org/dist/tomee/tomee-9/v9.0.58/bin/apache-tomee-9.0.58.tar.gz"
+    version = "9.0.58"
+
+    [[metadata.dependencies.licenses]]
+      type = "Apache-2.0"
+      uri = "https://www.apache.org/licenses/"
+
+  [[metadata.dependencies]]
+    cpes = ["cpe:2.3:a:apache:tomee:10.0.16:*:*:*:*:*:*:*"]
+    id = "tomee"
+    name = "Apache Tomee"
+    purl = "pkg:generic/apache-tomee@10.0.16"
+    sha256 = "4931f74f8b564d937a95b8afca43a187b94489c2a1fa4d17551acb6cca2d5051"
+    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    uri = "https://archive.apache.org/dist/tomee/tomee-10/v10.0.16/bin/apache-tomee-10.0.16.tar.gz"
+    version = "10.0.16"
+
+    [[metadata.dependencies.licenses]]
+      type = "Apache-2.0"
+      uri = "https://www.apache.org/licenses/"
+
+  [[metadata.dependencies]]
+    cpes = ["cpe:2.3:a:cloudfoundry:tomee-access-logging-support:3.3.0:*:*:*:*:*:*:*"]
+    id = "tomee-access-logging-support"
+    name = "Apache Tomee Access Logging Support"
+    purl = "pkg:generic/tomee-access-logging-support@3.3.0"
+    sha256 = "49f9acac1bed65c683276d662c985ed63c685a603e7f5b72f732673bb826a0d4"
+    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    uri = "https://repo.spring.io/release/org/cloudfoundry/tomee-access-logging-support/3.3.0.RELEASE/tomee-access-logging-support-3.3.0.RELEASE.jar"
+    version = "3.3.0"
+
+    [[metadata.dependencies.licenses]]
+      type = "Apache-2.0"
+      uri = "https://github.com/cloudfoundry/java-buildpack-support/blob/main/LICENSE"
+
+  [[metadata.dependencies]]
+    cpes = ["cpe:2.3:a:cloudfoundry:tomee-lifecycle-support:3.3.0:*:*:*:*:*:*:*"]
+    id = "tomee-lifecycle-support"
+    name = "Apache Tomee Lifecycle Support"
+    purl = "pkg:generic/tomee-lifecycle-support@3.3.0"
+    sha256 = "b725f4cae0be4a999a08ed978b29081edfd68a187a926ed740cc1f8e9aca70ce"
+    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    uri = "https://repo.spring.io/release/org/cloudfoundry/tomee-lifecycle-support/3.3.0.RELEASE/tomee-lifecycle-support-3.3.0.RELEASE.jar"
+    version = "3.3.0"
+
+    [[metadata.dependencies.licenses]]
+      type = "Apache-2.0"
+      uri = "https://github.com/cloudfoundry/java-buildpack-support/blob/main/LICENSE"
+
+  [[metadata.dependencies]]
+    cpes = ["cpe:2.3:a:cloudfoundry:tomee-logging-support:3.3.0:*:*:*:*:*:*:*"]
+    id = "tomee-logging-support"
+    name = "Apache Tomee Logging Support"
+    purl = "pkg:generic/tomee-logging-support@3.3.0"
+    sha256 = "46db58c1d8ef2555d7053a12d669daefb676e9a17a2a1771cd60c95bcb210b0d"
+    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    uri = "https://repo.spring.io/release/org/cloudfoundry/tomee-logging-support/3.3.0.RELEASE/tomee-logging-support-3.3.0.RELEASE.jar"
+    version = "3.3.0"
+
+    [[metadata.dependencies.licenses]]
+      type = "Apache-2.0"
+      uri = "https://github.com/cloudfoundry/java-buildpack-support/blob/main/LICENSE"
+
+  [[metadata.dependencies]]
+    cpes = ["cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.3.2:*:*:*:*:*:*:*"]
+    id = "postgres-driver"
+    name = "Postgres JDBC driver"
+    purl = "pkg:generic/postgres-driver@42.3.2"
+    sha256 = "b9013e092d4a6dae404b9b2eaeaaec82e7583dd450911fdc1e436a5aa62a25cf"
+    stacks = ["io.buildpacks.stacks.bionic"]
+    uri = "https://repo1.maven.org/maven2/org/postgresql/postgresql/42.3.2/postgresql-42.3.2.jar"
+    version = "42.3.2"
+
+    [[metadata.dependencies.licenses]]
+      type = "BSD-2-Clause"
+      uri = "https://jdbc.postgresql.org/about/license.html"
+
+[[stacks]]
+  id = "io.buildpacks.stacks.bionic"
+
+[[stacks]]
+  id = "io.paketo.stacks.tiny"
+
+[[stacks]]
+  id = "*"

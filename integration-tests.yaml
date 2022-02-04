@@ -1,0 +1,10 @@
+name: Datasource Suite
+testcases:
+- name: can query datasource defined in context.xml
+  steps:
+  - type: http
+    method: GET
+    url: http://localhost:8080/test
+    assertions:
+    - result.body ShouldEqual OK
+    - result.statuscode ShouldEqual 200
