@@ -111,14 +111,6 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 					"purl":    "pkg:generic/tomcat-logging-support@1.1.1",
 					"cpes":    "cpe:2.3:a:cloudfoundry:tomcat-logging-support:1.1.1:*:*:*:*:*:*:*",
 				},
-				{
-					"id":      "postgres-driver",
-					"version": "1.1.1",
-					"uri":     "https://example.com/releases/postgres-1.1.1.RELEASE.jar",
-					"stacks":  []interface{}{"test-stack-id"},
-					"purl":    "pkg:generic/postgres-driver@1.1.1",
-					"cpes":    "cpe:2.3:a:postgresql:postgresql_jdbc_driver:1.1.1:*:*:*:*:*:*:*",
-				},
 			},
 		}
 		ctx.StackID = "test-stack-id"
@@ -178,14 +170,6 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 					"stacks":  []interface{}{libpak.TinyStackID},
 					"purl":    "pkg:generic/tomee-logging-support@1.1.1",
 					"cpes":    []interface{}{"cpe:2.3:a:cloudfoundry:tomcat-logging-support:1.1.1:*:*:*:*:*:*:*"},
-				},
-				{
-					"id":      "postgres-driver",
-					"version": "1.1.1",
-					"uri":     "https://example.com/releases/postgres-1.1.1.RELEASE.jar",
-					"stacks":  []interface{}{libpak.TinyStackID},
-					"purl":    "pkg:generic/postgres-driver@1.1.1",
-					"cpes":    "cpe:2.3:a:postgresql:postgresql_jdbc_driver:1.1.1:*:*:*:*:*:*:*",
 				},
 			},
 		}
@@ -266,11 +250,6 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 						"version": "1.1.1",
 						"stacks":  []interface{}{"test-stack-id"},
 					},
-					{
-						"id":      "postgres-driver",
-						"version": "1.1.1",
-						"stacks":  []interface{}{"test-stack-id"},
-					},
 				},
 			}
 			ctx.StackID = "test-stack-id"
@@ -321,11 +300,6 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 						"version": "1.1.1",
 						"stacks":  []interface{}{"test-stack-id"},
 					},
-					{
-						"id":      "postgres-driver",
-						"version": "1.1.1",
-						"stacks":  []interface{}{"test-stack-id"},
-					},
 				},
 			}
 			ctx.StackID = "test-stack-id"
@@ -334,8 +308,8 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 			Expect(err).NotTo(HaveOccurred())
 
 			Expect(result.Layers[2].(tomee.Base).ExternalConfigurationDependency).To(Equal(&libpak.BuildpackDependency{
-				ID:      "tomcat-external-configuration",
-				Name:    "Tomcat External Configuration",
+				ID:      "tomee-external-configuration",
+				Name:    "Tomee External Configuration",
 				Version: "test-version",
 				URI:     "test-uri",
 				SHA256:  "test-sha256",

@@ -28,70 +28,13 @@ api = "0.7"
     uri = "https://github.com/garethjevans/apache-tomee/blob/main/LICENSE"
 
 [metadata]
-  include-files = ["LICENSE", "NOTICE", "README.md", "bin/build", "bin/detect", "bin/helper", "bin/main", "buildpack.toml", "resources/context.xml", "resources/context-with-datasource.xml", "resources/logging.properties", "resources/server.xml", "resources/web.xml"]
+  include-files = ["LICENSE", "NOTICE", "README.md", "bin/build", "bin/detect", "bin/helper", "bin/main", "buildpack.toml", "resources/context.xml", "resources/logging.properties", "resources/server.xml", "resources/web.xml"]
   pre-package = "scripts/build.sh"
 
   [[metadata.configurations]]
     description = "the Tomee access logging state"
     launch = true
     name = "BPL_TOMEE_ACCESS_LOGGING_ENABLED"
-
-  [[metadata.configurations]]
-    default = "false"
-    description = "enable the managed datasource as part of the launch helper"
-    launch = true
-    name = "BPL_TOMEE_MANAGED_DATASOURCE_ENABLED"
-
-  [[metadata.configurations]]
-    default = "jdbc/datasource"
-    description = "the name of the managed datasource to create"
-    launch = true
-    name = "BPL_TOMEE_MANAGED_DATASOURCE_NAME"
-
-  [[metadata.configurations]]
-    default = "Container"
-    description = "the managed datasource auth"
-    launch = true
-    name = "BPL_TOMEE_MANAGED_DATASOURCE_AUTH"
-
-  [[metadata.configurations]]
-    default = "javax.sql.DataSource"
-    description = "the managed datasource type"
-    launch = true
-    name = "BPL_TOMEE_MANAGED_DATASOURCE_TYPE"
-
-  [[metadata.configurations]]
-    description = "the managed datasource driver"
-    launch = true
-    name = "BPL_TOMEE_MANAGED_DATASOURCE_DRIVER"
-
-  [[metadata.configurations]]
-    description = "the managed datasource username"
-    launch = true
-    name = "BPL_TOMEE_MANAGED_DATASOURCE_USERNAME"
-
-  [[metadata.configurations]]
-    description = "the managed datasoure password"
-    launch = true
-    name = "BPL_TOMEE_MANAGED_DATASOURCE_PASSWORD"
-
-  [[metadata.configurations]]
-    default = "20"
-    description = "the managed datasource maxTotal"
-    launch = true
-    name = "BPL_TOMEE_MANAGED_DATASOURCE_MAX_TOTAL"
-
-  [[metadata.configurations]]
-    default = "10"
-    description = "the managed datasource maxIdle"
-    launch = true
-    name = "BPL_TOMEE_MANAGED_DATASOURCE_MAX_IDLE"
-
-  [[metadata.configurations]]
-    default = "-1"
-    description = "the managed datasource maxWaitMillis"
-    launch = true
-    name = "BPL_TOMEE_MANAGED_DATASOURCE_MAX_WAIT_MILLIS"
 
   [[metadata.configurations]]
     build = true
@@ -124,12 +67,6 @@ api = "0.7"
     default = "9.*"
     description = "the Tomee version"
     name = "BP_TOMEE_VERSION"
-
-  [[metadata.configurations]]
-    build = true
-    default = "false"
-    description = "Add the postgres jar to the lib dir"
-    name = "BP_TOMEE_INCLUDE_POSTGRES_JAR"
 
   [[metadata.dependencies]]
     cpes = ["cpe:2.3:a:apache:tomee:8.5.75:*:*:*:*:*:*:*"]
@@ -214,20 +151,6 @@ api = "0.7"
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
       uri = "https://github.com/cloudfoundry/java-buildpack-support/blob/main/LICENSE"
-
-  [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.3.2:*:*:*:*:*:*:*"]
-    id = "postgres-driver"
-    name = "Postgres JDBC driver"
-    purl = "pkg:generic/postgres-driver@42.3.2"
-    sha256 = "b9013e092d4a6dae404b9b2eaeaaec82e7583dd450911fdc1e436a5aa62a25cf"
-    stacks = ["io.buildpacks.stacks.bionic"]
-    uri = "https://repo1.maven.org/maven2/org/postgresql/postgresql/42.3.2/postgresql-42.3.2.jar"
-    version = "42.3.2"
-
-    [[metadata.dependencies.licenses]]
-      type = "BSD-2-Clause"
-      uri = "https://jdbc.postgresql.org/about/license.html"
 
 [[stacks]]
   id = "io.buildpacks.stacks.bionic"

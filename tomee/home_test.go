@@ -52,7 +52,7 @@ func testHome(t *testing.T, context spec.G, it spec.S) {
 		dep := libpak.BuildpackDependency{
 			ID:     "tomee",
 			URI:    "https://localhost/stub-tomee.tar.gz",
-			SHA256: "c31f9fd9b9458dd8dda54ce879dc7b08f8de0e638cb0936abcaa2316e7460c1e",
+			SHA256: "26a0f0d1782027e7849389cb975a40cd8e69497d19946442881d61bd5f1756bf",
 			PURL:   "pkg:generic/tomee@1.1.1",
 			CPEs:   []string{"cpe:2.3:a:apache:tomee:1.1.1:*:*:*:*:*:*:*"},
 		}

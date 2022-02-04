@@ -45,7 +45,6 @@ type Base struct {
 	LifecycleDependency             libpak.BuildpackDependency
 	LoggingDependency               libpak.BuildpackDependency
 	Logger                          bard.Logger
-	PostgresDependency              libpak.BuildpackDependency
 }
 
 func NewBase(
@@ -58,7 +57,6 @@ func NewBase(
 	lifecycleDependency libpak.BuildpackDependency,
 	loggingDependency libpak.BuildpackDependency,
 	cache libpak.DependencyCache,
-	postgresDependency libpak.BuildpackDependency,
 ) (Base, []libcnb.BOMEntry) {
 
 	dependencies := []libpak.BuildpackDependency{accessLoggingDependency, lifecycleDependency, loggingDependency}
@@ -82,7 +80,6 @@ func NewBase(
 		}),
 		LifecycleDependency: lifecycleDependency,
 		LoggingDependency:   loggingDependency,
-		PostgresDependency:  postgresDependency,
 	}
 
 	var bomEntries []libcnb.BOMEntry
@@ -118,20 +115,12 @@ func (b Base) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {
 	var syftArtifacts []sbom.SyftArtifact
 
 	return b.LayerContributor.Contribute(layer, func() (libcnb.Layer, error) {
-		requiresDatasource := sherpa.ResolveBool("BP_TOMEE_MANAGED_DATASOURCE_ENABLED")
-		if err := b.ContributeConfiguration(layer, requiresDatasource); err != nil {
+		if err := b.ContributeConfiguration(layer); err != nil {
 			return libcnb.Layer{}, fmt.Errorf("unable to contribute configuration\n%w", err)
 		}
 
 		if err := b.ContributeAccessLogging(layer); err != nil {
 			return libcnb.Layer{}, fmt.Errorf("unable to contribute access logging\n%w", err)
-		}
-
-		includePostgresJar := sherpa.ResolveBool("BP_TOMEE_INCLUDE_POSTGRES_JAR")
-		if includePostgresJar {
-			if err := b.ContributePostgresJar(layer); err != nil {
-				return libcnb.Layer{}, fmt.Errorf("unable to contribute postgres jar\n%w", err)
-			}
 		}
 
 		if syftArtifact, err := b.AccessLoggingDependency.AsSyftArtifact(); err != nil {
@@ -214,26 +203,7 @@ func (b Base) ContributeAccessLogging(layer libcnb.Layer) error {
 	return nil
 }
 
-func (b Base) ContributePostgresJar(layer libcnb.Layer) error {
-	b.Logger.Header(color.BlueString("%s %s", b.PostgresDependency.Name, b.PostgresDependency.Version))
-
-	artifact, err := b.DependencyCache.Artifact(b.PostgresDependency)
-	if err != nil {
-		return fmt.Errorf("unable to get dependency %s\n%w", b.PostgresDependency.ID, err)
-	}
-	defer artifact.Close()
-
-	b.Logger.Bodyf("Copying to %s/lib", layer.Path)
-
-	file := filepath.Join(layer.Path, "lib", filepath.Base(artifact.Name()))
-	if err := sherpa.CopyFile(artifact, file); err != nil {
-		return fmt.Errorf("unable to copy %s to %s\n%w", artifact.Name(), file, err)
-	}
-
-	return nil
-}
-
-func (b Base) ContributeConfiguration(layer libcnb.Layer, requiresDatasource bool) error {
+func (b Base) ContributeConfiguration(layer libcnb.Layer) error {
 	var err error
 	var in *os.File
 	file := filepath.Join(layer.Path, "conf")
@@ -241,23 +211,13 @@ func (b Base) ContributeConfiguration(layer libcnb.Layer, requiresDatasource boo
 		return fmt.Errorf("unable to create directory %s\n%w", file, err)
 	}
 
-	if requiresDatasource {
-		b.Logger.Bodyf("Copying context.xml from context-with-datasource.xml to %s/conf", layer.Path)
-		file = filepath.Join(b.BuildpackPath, "resources", "context-with-datasource.xml")
-		in, err = os.Open(file)
-		if err != nil {
-			return fmt.Errorf("unable to open %s\n%w", file, err)
-		}
-		defer in.Close()
-	} else {
-		b.Logger.Bodyf("Copying context.xml to %s/conf", layer.Path)
-		file = filepath.Join(b.BuildpackPath, "resources", "context.xml")
-		in, err = os.Open(file)
-		if err != nil {
-			return fmt.Errorf("unable to open %s\n%w", file, err)
-		}
-		defer in.Close()
+	b.Logger.Bodyf("Copying context.xml to %s/conf", layer.Path)
+	file = filepath.Join(b.BuildpackPath, "resources", "context.xml")
+	in, err = os.Open(file)
+	if err != nil {
+		return fmt.Errorf("unable to open %s\n%w", file, err)
 	}
+	defer in.Close()
 
 	file = filepath.Join(layer.Path, "conf", "context.xml")
 	if err := sherpa.CopyFile(in, file); err != nil {

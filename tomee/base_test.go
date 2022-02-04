@@ -89,13 +89,6 @@ func testBase(t *testing.T, context spec.G, it spec.S) {
 			PURL:   "pkg:generic/tomcat-logging-support@3.3.0",
 			CPEs:   []string{"cpe:2.3:a:cloudfoundry:tomcat-logging-support:3.3.0:*:*:*:*:*:*:*"},
 		}
-		postgresDependency := libpak.BuildpackDependency{
-			ID:     "postgres-driver",
-			URI:    "https://localhost/stub-postgres.jar",
-			SHA256: "8370570857da86eb4a76dd3d8505d34bac0c18186741fa83a6820a10fa441cb4",
-			PURL:   "pkg:generic/postgres-driver@42.3.1",
-			CPEs:   []string{"cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.3.1:*:*:*:*:*:*:*"},
-		}
 
 		dc := libpak.DependencyCache{CachePath: "testdata"}
 
@@ -109,7 +102,6 @@ func testBase(t *testing.T, context spec.G, it spec.S) {
 			lifecycleDep,
 			loggingDep,
 			dc,
-			postgresDependency,
 		)
 		Expect(entries).To(HaveLen(0))
 
@@ -180,17 +172,10 @@ func testBase(t *testing.T, context spec.G, it spec.S) {
 			PURL:   "pkg:generic/tomcat-logging-support@3.3.0",
 			CPEs:   []string{"cpe:2.3:a:cloudfoundry:tomcat-logging-support:3.3.0:*:*:*:*:*:*:*"},
 		}
-		postgresDependency := libpak.BuildpackDependency{
-			ID:     "postgres-driver",
-			URI:    "https://localhost/stub-postgres.jar",
-			SHA256: "8370570857da86eb4a76dd3d8505d34bac0c18186741fa83a6820a10fa441cb4",
-			PURL:   "pkg:generic/postgres-driver@42.3.1",
-			CPEs:   []string{"cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.3.1:*:*:*:*:*:*:*"},
-		}
 
 		dc := libpak.DependencyCache{CachePath: "testdata"}
 
-		contrib, entries := tomee.NewBase(ctx.Application.Path, ctx.Buildpack.Path, libpak.ConfigurationResolver{}, "test-context-path", accessLoggingDep, &externalConfigurationDep, lifecycleDep, loggingDep, dc, postgresDependency)
+		contrib, entries := tomee.NewBase(ctx.Application.Path, ctx.Buildpack.Path, libpak.ConfigurationResolver{}, "test-context-path", accessLoggingDep, &externalConfigurationDep, lifecycleDep, loggingDep, dc)
 		layer, err := ctx.Layers.Layer("test-layer")
 		Expect(err).NotTo(HaveOccurred())
 		Expect(entries).To(HaveLen(0))
@@ -249,17 +234,10 @@ func testBase(t *testing.T, context spec.G, it spec.S) {
 				PURL:   "pkg:generic/tomcat-logging-support@3.3.0",
 				CPEs:   []string{"cpe:2.3:a:cloudfoundry:tomcat-logging-support:3.3.0:*:*:*:*:*:*:*"},
 			}
-			postgresDependency := libpak.BuildpackDependency{
-				ID:     "postgres-driver",
-				URI:    "https://localhost/stub-postgres.jar",
-				SHA256: "8370570857da86eb4a76dd3d8505d34bac0c18186741fa83a6820a10fa441cb4",
-				PURL:   "pkg:generic/postgres-driver@42.3.1",
-				CPEs:   []string{"cpe:2.3:a:postgresql:postgresql_jdbc_driver:42.3.1:*:*:*:*:*:*:*"},
-			}
 
 			dc := libpak.DependencyCache{CachePath: "testdata"}
 
-			contrib, entries := tomee.NewBase(ctx.Application.Path, ctx.Buildpack.Path, libpak.ConfigurationResolver{}, "test-context-path", accessLoggingDep, &externalConfigurationDep, lifecycleDep, loggingDep, dc, postgresDependency)
+			contrib, entries := tomee.NewBase(ctx.Application.Path, ctx.Buildpack.Path, libpak.ConfigurationResolver{}, "test-context-path", accessLoggingDep, &externalConfigurationDep, lifecycleDep, loggingDep, dc)
 			Expect(entries).To(HaveLen(0))
 
 			layer, err := ctx.Layers.Layer("test-layer")

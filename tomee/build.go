@@ -119,11 +119,6 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 		return libcnb.BuildResult{}, fmt.Errorf("unable to find dependency\n%w", err)
 	}
 
-	postgresDependency, err := dr.Resolve("postgres-driver", "")
-	if err != nil {
-		return libcnb.BuildResult{}, fmt.Errorf("unable to find dependency\n%w", err)
-	}
-
 	var externalConfigurationDependency *libpak.BuildpackDependency
 	if uri, ok := cr.Resolve("BP_TOMEE_EXT_CONF_URI"); ok {
 		v, _ := cr.Resolve("BP_TOMEE_EXT_CONF_VERSION")
@@ -131,7 +126,7 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 
 		externalConfigurationDependency = &libpak.BuildpackDependency{
 			ID:      "tomee-external-configuration",
-			Name:    "Tomcat External Configuration",
+			Name:    "Tomee External Configuration",
 			Version: v,
 			URI:     uri,
 			SHA256:  s,
@@ -141,7 +136,7 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 		}
 	}
 
-	base, bomEntries := NewBase(context.Application.Path, context.Buildpack.Path, cr, b.ContextPath(cr), accessLoggingDependency, externalConfigurationDependency, lifecycleDependency, loggingDependency, dc, postgresDependency)
+	base, bomEntries := NewBase(context.Application.Path, context.Buildpack.Path, cr, b.ContextPath(cr), accessLoggingDependency, externalConfigurationDependency, lifecycleDependency, loggingDependency, dc)
 
 	base.Logger = b.Logger
 	result.Layers = append(result.Layers, base)
