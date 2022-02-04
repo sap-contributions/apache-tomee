@@ -1,22 +1,7 @@
 version: "3.8"
 
 services:
-  postgres:
-    image: postgres:14.1
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=dummy
-      - POSTGRES_USER=dummy
-      - POSTGRES_DB=dummy
   datasource:
-    image: garethjevans/datasource
+    image: garethjevans/rest-service
     ports:
       - "8080:8080"
-    environment:
-      - BPL_TOMCAT_MANAGED_DATASOURCE_ENABLED=true
-      - BPL_TOMCAT_MANAGED_DATASOURCE_DRIVER=org.postgresql.Driver
-      - BPL_TOMCAT_MANAGED_DATASOURCE_URL=jdbc:postgresql://postgres/dummy
-      - BPL_TOMCAT_MANAGED_DATASOURCE_USERNAME=dummy
-      - BPL_TOMCAT_MANAGED_DATASOURCE_PASSWORD=dummy
-      - BPL_TOMCAT_MANAGED_DATASOURCE_NAME=jdbc/DatasourceOne

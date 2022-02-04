@@ -1,4 +1,4 @@
-IMAGE = example/datasource
+IMAGE = example/rest-service
 OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 
 clean:
@@ -24,8 +24,8 @@ pack: integrationtests/target/datasource-0.1-SNAPSHOT.war buildpack
 		-e BP_TOMEE_VERSION=8.*
 
 release: pack
-	docker tag $(IMAGE) garethjevans/datasource:latest
-	docker push garethjevans/datasource:latest
+	docker tag $(IMAGE) garethjevans/rest-service:latest
+	docker push garethjevans/rest-service:latest
 
 buildpack:
 	mkdir -p build
