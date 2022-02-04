@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-GOOS="linux" go build -ldflags='-s -w' -o bin/helper github.com/garethjevans/apache-tomcat/cmd/helper
-GOOS="linux" go build -ldflags='-s -w' -o bin/main github.com/garethjevans/apache-tomcat/cmd/main
+GOOS="linux" go build -ldflags='-s -w' -o bin/helper github.com/garethjevans/apache-tomee/cmd/helper
+GOOS="linux" go build -ldflags='-s -w' -o bin/main github.com/garethjevans/apache-tomee/cmd/main
 
 if [ "${STRIP:-false}" != "false" ]; then
   strip bin/helper bin/main
