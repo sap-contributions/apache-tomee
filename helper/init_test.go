@@ -26,6 +26,5 @@ import (
 func TestUnit(t *testing.T) {
 	suite := spec.New("helper", spec.Report(report.Terminal{}))
 	suite("AccessLoggingSupport", testAccessLoggingSupport)
-	suite("ManagedDatasourceSupport", testManagedDatasourceSupport)
 	suite.Run(t)
 }

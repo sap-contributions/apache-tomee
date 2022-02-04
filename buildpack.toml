@@ -69,42 +69,42 @@ api = "0.7"
     name = "BP_TOMEE_VERSION"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee:8.5.75:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee:7.1.4:*:*:*:*:*:*:*"]
     id = "tomee"
     name = "Apache Tomee"
-    purl = "pkg:generic/apache-tomee@8.5.75"
-    sha256 = "22c538f628ed03bd15b73951c73b6124a43e5148e8c6ba14cd890f16493a36d8"
+    purl = "pkg:generic/apache-tomee@7.1.4"
+    sha256 = "af8d2e3596a3df4c47db2e9386db1212bc17f688e547e3941d6c958821e859b0"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-8/v8.5.75/bin/apache-tomee-8.5.75.tar.gz"
-    version = "8.5.75"
+    uri = "https://archive.apache.org/dist/tomee/tomee-7.1.4/apache-tomee-7.1.4-microprofile.tar.gz"
+    version = "7.1.4"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
       uri = "https://www.apache.org/licenses/"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee:9.0.58:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee:8.0.9:*:*:*:*:*:*:*"]
     id = "tomee"
     name = "Apache Tomee"
-    purl = "pkg:generic/apache-tomee@9.0.58"
-    sha256 = "a7895a9f425dd57fba5a1e8685d43754d3ecfe05de80e93bfd245ca8313cc7c1"
+    purl = "pkg:generic/apache-tomee@8.0.9"
+    sha256 = "0ebe8c60ad454caf54c1af43c0540e3e0e63d058f21e5b3edc96904fbd09f4f1"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-9/v9.0.58/bin/apache-tomee-9.0.58.tar.gz"
-    version = "9.0.58"
+    uri = "https://archive.apache.org/dist/tomee/tomee-8.0.9/apache-tomee-8.0.9-microprofile.tar.gz"
+    version = "8.0.9"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
       uri = "https://www.apache.org/licenses/"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee:10.0.16:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee:9.0.0-M7:*:*:*:*:*:*:*"]
     id = "tomee"
     name = "Apache Tomee"
-    purl = "pkg:generic/apache-tomee@10.0.16"
-    sha256 = "4931f74f8b564d937a95b8afca43a187b94489c2a1fa4d17551acb6cca2d5051"
+    purl = "pkg:generic/apache-tomee@9.0.0-M7"
+    sha256 = "6058f6318f57f82a96700c701706d4f296d04b5b867a71cb6a01bb8686f83200"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-10/v10.0.16/bin/apache-tomee-10.0.16.tar.gz"
-    version = "10.0.16"
+    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M7/apache-tomee-9.0.0-M7-microprofile.tar.gz"
+    version = "9.0.0-M7"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"

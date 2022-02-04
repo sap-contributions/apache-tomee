@@ -29,7 +29,6 @@ func main() {
 	sherpa.Execute(func() error {
 		return sherpa.Helpers(map[string]sherpa.ExecD{
 			"access-logging-support": helper.AccessLoggingSupport{Logger: bard.NewLogger(os.Stdout)},
-			"managed-datasource-support": helper.ManagedDataSourceSupport{Logger: bard.NewLogger(os.Stdout)},
 		})
 	})
 }
