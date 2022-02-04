@@ -21,8 +21,7 @@ pack: integrationtests/target/datasource-0.1-SNAPSHOT.war buildpack
 		--buildpack garethjevans_apache_tomee.cnb \
 		--path integrationtests/target/datasource-0.1-SNAPSHOT.war \
 		-e BP_JVM_VERSION=8 \
-		-e BP_TOMCAT_MANAGED_DATASOURCE_ENABLED=true \
-		-e BP_TOMCAT_INCLUDE_POSTGRES_JAR=true
+		-e BP_TOMEE_VERSION=8.*
 
 release: pack
 	docker tag $(IMAGE) garethjevans/datasource:latest
