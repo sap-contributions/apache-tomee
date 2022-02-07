@@ -3,7 +3,7 @@ module github.com/garethjevans/apache-tomee
 go 1.15
 
 require (
-	github.com/buildpacks/libcnb v1.25.4
+	github.com/buildpacks/libcnb v1.25.5
 	github.com/heroku/color v0.0.6
 	github.com/kr/text v0.2.0 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
