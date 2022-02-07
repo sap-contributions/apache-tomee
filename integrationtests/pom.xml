@@ -2,36 +2,29 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>datasource</artifactId>
+	<artifactId>rest-service</artifactId>
 	<packaging>war</packaging>
 	<groupId>examples</groupId>
 	<version>0.1-SNAPSHOT</version>
 	<properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-		<!-- Open Source -->
-		<org.apache.logging.log4j.version>2.17.1</org.apache.logging.log4j.version>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+    	<maven.compiler.source>1.8</maven.compiler.source>
+    	<maven.compiler.target>1.8</maven.compiler.target>
+		<version.microprofile>1.3</version.microprofile>
 	</properties>
 
 	<dependencies>
-		<!-- Open Source -->
 		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>${org.apache.logging.log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${org.apache.logging.log4j.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-
-		<!-- JAVA EE -->
-		<dependency>
-			<groupId>javax</groupId>
+			<groupId>org.apache.tomee</groupId>
 			<artifactId>javaee-api</artifactId>
-			<version>7.0</version>
+			<version>8.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.microprofile</groupId>
+			<artifactId>microprofile</artifactId>
+			<version>${version.microprofile}</version>
+			<type>pom</type>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

@@ -1,4 +1,4 @@
-IMAGE = example/rest-service
+IMAGE = garethjevans/rest-service
 OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 
 clean:
@@ -10,18 +10,19 @@ clean:
 target:
 	mkdir -p target
 
-integrationtests/target/datasource-0.1-SNAPSHOT.war:
+integrationtests/target/rest-service-0.1-SNAPSHOT.war:
 	cd integrationtests && mvn clean package --no-transfer-progress && cd ..
 
-pack: integrationtests/target/datasource-0.1-SNAPSHOT.war buildpack
+pack: integrationtests/target/rest-service-0.1-SNAPSHOT.war buildpack
 	pack build $(IMAGE) \
 		--buildpack paketo-buildpacks/syft@1.5.0 \
 		--buildpack paketo-buildpacks/ca-certificates@2.4.2 \
 		--buildpack paketo-buildpacks/bellsoft-liberica@9.0.2 \
 		--buildpack garethjevans_apache_tomee.cnb \
-		--path integrationtests/target/datasource-0.1-SNAPSHOT.war \
+		--path integrationtests/target/rest-service-0.1-SNAPSHOT.war \
 		-e BP_JVM_VERSION=8 \
-		-e BP_TOMEE_VERSION=8.*
+		-e BP_TOMEE_VERSION=7.* \
+		--publish
 
 release: pack
 	docker tag $(IMAGE) garethjevans/rest-service:latest
@@ -42,12 +43,6 @@ test:
 
 run: pack
 	docker run -p 8080:8080 \
-		-e BPL_TOMCAT_ACCESS_LOGGING_ENABLED=true \
-		-e BPL_TOMCAT_MANAGED_DATASOURCE_ENABLED=true \
-		-e BPL_TOMCAT_MANAGED_DATASOURCE_DRIVER=oracle.jdbc.Driver \
-		-e BPL_TOMCAT_MANAGED_DATASOURCE_URL=jdbc:oracle:thin:@127.0.0.1:1521:mysid \
-		-e BPL_TOMCAT_MANAGED_DATASOURCE_USERNAME=scott \
-		-e BPL_TOMCAT_MANAGED_DATASOURCE_PASSWORD=tiger \
 		$(IMAGE)
 
 integration: pack
