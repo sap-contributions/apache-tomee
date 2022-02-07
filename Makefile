@@ -73,13 +73,13 @@ run: pack
 		$(IMAGE)
 
 integration: pack-tomee-7 pack-tomee-8 pack-tomee-9
-	container-structure-test test --config test-config.yaml --image $(IMAGE)-v7
-	container-structure-test test --config test-config.yaml --image $(IMAGE)-v8
-	container-structure-test test --config test-config.yaml --image $(IMAGE)-v9
-	docker-compose up -d
-	sleep 30
-	venom run integration-tests.yaml
-	docker-compose down
+	container-structure-test test --config integrationtests/test-config.yaml --image $(IMAGE)-v7
+	container-structure-test test --config integrationtests/test-config.yaml --image $(IMAGE)-v8
+	container-structure-test test --config integrationtests/test-config.yaml --image $(IMAGE)-v9
+	cd integrationtests && docker-compose up -d
+	sleep 15
+	venom run integrationtests/integration-tests.yaml
+	cd integrationtests && docker-compose down
 
 venom:
 	curl -o venom -L "https://github.com/ovh/venom/releases/download/v1.0.1/venom.$(OS)-amd64"
