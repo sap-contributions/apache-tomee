@@ -156,7 +156,7 @@ jobs:
               --format "${FORMAT}"
           fi
         env:
-          PACKAGE: ghcr.io/garethjevans/apache-tomcat
+          PACKAGE: ghcr.io/garethjevans/apache-tomee
           PUBLISH: "true"
           VERSION: ${{ steps.version.outputs.version }}
       - name: Update release with digest
@@ -185,6 +185,6 @@ jobs:
         uses: docker://ghcr.io/buildpacks/actions/registry/request-add-entry:4.0.1
         with:
           address: ghcr.io/garethjevans/apache-tomcat@${{ steps.package.outputs.digest }}
-          id: garethjevans/apache-tomcat
+          id: garethjevans/apache-tomee
           token: ${{ secrets.JAVA_GITHUB_TOKEN }}
           version: ${{ steps.version.outputs.version }}
