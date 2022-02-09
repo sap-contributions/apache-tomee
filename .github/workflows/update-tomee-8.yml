@@ -1,4 +1,4 @@
-name: Update Tomcat 10
+name: Update Tomee 8
 "on":
     schedule:
         - cron: 0 5 * * 1-5
@@ -42,9 +42,11 @@ jobs:
                 YJ_VERSION: 5.0.0
             - uses: actions/checkout@v2
             - id: dependency
-              uses: docker://ghcr.io/paketo-buildpacks/actions/tomcat-dependency:main
+              uses: docker://garethjevans/actions/tomee-dependency:main
               with:
-                uri: https://archive.apache.org/dist/tomcat/tomcat-10
+                uri: https://archive.apache.org/dist/tomee
+                dist: microprofile
+                major_version: 8
             - name: Update Buildpack Dependency
               id: buildpack
               run: |-
@@ -87,24 +89,24 @@ jobs:
               env:
                 CPE: ${{ steps.dependency.outputs.cpe }}
                 CPE_PATTERN: ""
-                ID: tomcat
+                ID: tomee
                 PURL: ${{ steps.dependency.outputs.purl }}
                 PURL_PATTERN: ""
                 SHA256: ${{ steps.dependency.outputs.sha256 }}
                 URI: ${{ steps.dependency.outputs.uri }}
                 VERSION: ${{ steps.dependency.outputs.version }}
-                VERSION_PATTERN: 10\.[\d]+\.[\d]+
+                VERSION_PATTERN: 8\.[\d]+\.[\d]+
             - uses: peter-evans/create-pull-request@v3
               with:
                 author: ${{ secrets.JAVA_GITHUB_USERNAME }} <${{ secrets.JAVA_GITHUB_USERNAME }}@users.noreply.github.com>
-                body: Bumps `Tomcat 10` from `${{ steps.buildpack.outputs.old-version }}` to `${{ steps.buildpack.outputs.new-version }}`.
-                branch: update/buildpack/tomcat-10
+                body: Bumps `Tomee 8` from `${{ steps.buildpack.outputs.old-version }}` to `${{ steps.buildpack.outputs.new-version }}`.
+                branch: update/buildpack/tomee-8
                 commit-message: |-
-                    Bump Tomcat 10 from ${{ steps.buildpack.outputs.old-version }} to ${{ steps.buildpack.outputs.new-version }}
+                    Bump Tomee 8 from ${{ steps.buildpack.outputs.old-version }} to ${{ steps.buildpack.outputs.new-version }}
 
-                    Bumps Tomcat 10 from ${{ steps.buildpack.outputs.old-version }} to ${{ steps.buildpack.outputs.new-version }}.
+                    Bumps Tomee 8 from ${{ steps.buildpack.outputs.old-version }} to ${{ steps.buildpack.outputs.new-version }}.
                 delete-branch: true
                 labels: ${{ steps.buildpack.outputs.version-label }}, type:dependency-upgrade
                 signoff: true
-                title: Bump Tomcat 10 from ${{ steps.buildpack.outputs.old-version }} to ${{ steps.buildpack.outputs.new-version }}
+                title: Bump Tomee 8 from ${{ steps.buildpack.outputs.old-version }} to ${{ steps.buildpack.outputs.new-version }}
                 token: ${{ secrets.JAVA_GITHUB_TOKEN }}
