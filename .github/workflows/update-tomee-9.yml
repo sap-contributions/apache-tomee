@@ -47,7 +47,6 @@ jobs:
                 uri: https://archive.apache.org/dist/tomee
                 dist: microprofile
                 major: 9
-                pre_release: true
             - name: Update Buildpack Dependency
               id: buildpack
               run: |-
