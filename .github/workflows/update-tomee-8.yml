@@ -42,7 +42,7 @@ jobs:
                 YJ_VERSION: 5.0.0
             - uses: actions/checkout@v2
             - id: dependency
-              uses: docker://garethjevans/actions/tomee-dependency:main
+              uses: docker://garethjevans/tomee-dependency:main
               with:
                 uri: https://archive.apache.org/dist/tomee
                 dist: microprofile
