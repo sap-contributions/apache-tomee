@@ -5,6 +5,8 @@ github:
 codeowners:
 - path:  "*"
   owner: "garethjevans"
+- path:  "*"
+  owner: "samcolson4"
 
 package:
   repository:     ghcr.io/garethjevans/apache-tomee
