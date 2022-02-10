@@ -18,6 +18,7 @@ package tomee
 
 import (
 	"fmt"
+	"github.com/paketo-buildpacks/libpak/sherpa"
 	"os"
 	"path/filepath"
 
@@ -41,6 +42,11 @@ func (d Detect) Detect(context libcnb.DetectContext) (libcnb.DetectResult, error
 	}
 
 	if _, ok := m.Get("Main-Class"); ok {
+		return libcnb.DetectResult{Pass: false}, nil
+	}
+
+	appServer := sherpa.GetEnvWithDefault("BP_JAVA_APP_SERVER", "tomcat")
+	if appServer != "tomee" {
 		return libcnb.DetectResult{Pass: false}, nil
 	}
 
