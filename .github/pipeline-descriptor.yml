@@ -14,7 +14,7 @@ package:
 docker_credentials:
 - registry: ghcr.io
   username: ${{ github.actor }}
-  password: ${{ secrets.GITHUB_TOKEN }}
+  password: ${{ secrets.JAVA_GITHUB_TOKEN }}
 
 dependencies:
 - name:            Tomee 7
