@@ -19,7 +19,7 @@ api = "0.7"
   homepage = "https://github.com/garethjevans/apache-tomee"
   id = "garethjevans/apache-tomee"
   keywords = ["java", "tomee", "war"]
-  name = "GarethJEvans' Apache Tomee Buildpack"
+  name = "Apache Tomee Buildpack"
   sbom-formats = ["application/vnd.cyclonedx+json", "application/vnd.syft+json"]
   version = "{{.version}}"
 
