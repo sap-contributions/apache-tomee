@@ -44,7 +44,7 @@ jobs:
             - id: dependency
               uses: docker://garethjevans/tomee-dependency:main
               with:
-                uri: https://archive.apache.org/dist/tomee
+                uri: https://downloads.apache.org/tomee
                 dist: microprofile
                 major: 9
             - name: Update Buildpack Dependency

@@ -63,10 +63,10 @@ jobs:
                 echo "${HOME}/bin" >> "${GITHUB_PATH}"
 
                 curl \
-                    --location \
-                    --show-error \
-                    --silent \
-                    "https://github.com/buildpacks/pack/releases/download/v${PACK_VERSION}/pack-v${PACK_VERSION}-linux.tgz" \
+                  --location \
+                  --show-error \
+                  --silent \
+                  "https://github.com/buildpacks/pack/releases/download/v${PACK_VERSION}/pack-v${PACK_VERSION}-linux.tgz" \
                 | tar -C "${HOME}"/bin -xz pack
               env:
                 PACK_VERSION: 0.21.1
@@ -98,17 +98,17 @@ jobs:
                 set -euo pipefail
 
                 if [[ ${GITHUB_REF} =~ refs/tags/v([0-9]+\.[0-9]+\.[0-9]+) ]]; then
-                    VERSION=${BASH_REMATCH[1]}
+                  VERSION=${BASH_REMATCH[1]}
 
-                    MAJOR_VERSION="$(echo "${VERSION}" | awk -F '.' '{print $1 }')"
-                    MINOR_VERSION="$(echo "${VERSION}" | awk -F '.' '{print $1 "." $2 }')"
+                  MAJOR_VERSION="$(echo "${VERSION}" | awk -F '.' '{print $1 }')"
+                  MINOR_VERSION="$(echo "${VERSION}" | awk -F '.' '{print $1 "." $2 }')"
 
-                    echo "::set-output name=version-major::${MAJOR_VERSION}"
-                    echo "::set-output name=version-minor::${MINOR_VERSION}"
+                  echo "::set-output name=version-major::${MAJOR_VERSION}"
+                  echo "::set-output name=version-minor::${MINOR_VERSION}"
                 elif [[ ${GITHUB_REF} =~ refs/heads/(.+) ]]; then
-                    VERSION=${BASH_REMATCH[1]}
+                  VERSION=${BASH_REMATCH[1]}
                 else
-                    VERSION=$(git rev-parse --short HEAD)
+                  VERSION=$(git rev-parse --short HEAD)
                 fi
 
                 echo "::set-output name=version::${VERSION}"
@@ -123,17 +123,17 @@ jobs:
                 set -euo pipefail
 
                 if [[ "${INCLUDE_DEPENDENCIES}" == "true" ]]; then
-                    create-package \
-                        --source ${SOURCE_PATH:-.} \
-                        --cache-location "${HOME}"/carton-cache \
-                        --destination "${HOME}"/buildpack \
-                        --include-dependencies \
-                        --version "${VERSION}"
+                  create-package \
+                    --source ${SOURCE_PATH:-.} \
+                    --cache-location "${HOME}"/carton-cache \
+                    --destination "${HOME}"/buildpack \
+                    --include-dependencies \
+                    --version "${VERSION}"
                 else
-                    create-package \
-                        --source ${SOURCE_PATH:-.} \
-                        --destination "${HOME}"/buildpack \
-                        --version "${VERSION}"
+                  create-package \
+                    --source ${SOURCE_PATH:-.} \
+                    --destination "${HOME}"/buildpack \
+                    --version "${VERSION}"
                 fi
 
                 [[ -e package.toml ]] && cp package.toml "${HOME}"/package.toml
@@ -150,24 +150,26 @@ jobs:
 
                 set -euo pipefail
 
-                if [[ -n "${PUBLISH+x}" ]]; then
-                    pack buildpack package \
-                        "${PACKAGE}:${VERSION}" \
-                        --config "${HOME}"/package.toml \
-                        --publish
+                if [[ "${PUBLISH+x}" == "true" ]]; then
+                  pack buildpack package \
+                    "${PACKAGE}:${VERSION}" \
+                    --config "${HOME}"/package.toml \
+                    --publish
 
-                    crane tag "${PACKAGE}:${VERSION}" latest
-                    echo "::set-output name=digest::$(crane digest "${PACKAGE}:${VERSION}")"
+                  crane tag "${PACKAGE}:${VERSION}" latest
+                  echo "::set-output name=digest::$(crane digest "${PACKAGE}:${VERSION}")"
                 else
-                    pack buildpack package \
-                        "${PACKAGE}:${VERSION}" \
-                        --config "${HOME}"/package.toml \
-                        --format "${FORMAT}"
+                  pack buildpack package \
+                    "${PACKAGE}:${VERSION}" \
+                    --config "${HOME}"/package.toml \
+                    --format "${FORMAT}"
                 fi
               env:
                 PACKAGE: ghcr.io/garethjevans/apache-tomee
                 PUBLISH: "true"
                 VERSION: ${{ steps.version.outputs.version }}
+                VERSION_MAJOR: ${{ steps.version.outputs.version-major }}
+                VERSION_MINOR: ${{ steps.version.outputs.version-minor }}
             - name: Update release with digest
               run: |
                 #!/usr/bin/env bash
@@ -182,18 +184,18 @@ jobs:
                 RELEASE_BODY=$(jq -n -r --argjson PAYLOAD "${PAYLOAD}" '$PAYLOAD.release.body')
 
                 gh api \
-                    --method PATCH \
-                    "/repos/:owner/:repo/releases/${RELEASE_ID}" \
-                    --field "tag_name=${RELEASE_TAG_NAME}" \
-                    --field "name=${RELEASE_NAME}" \
-                    --field "body=${RELEASE_BODY//<!-- DIGEST PLACEHOLDER -->/\`${DIGEST}\`}"
+                  --method PATCH \
+                  "/repos/:owner/:repo/releases/${RELEASE_ID}" \
+                  --field "tag_name=${RELEASE_TAG_NAME}" \
+                  --field "name=${RELEASE_NAME}" \
+                  --field "body=${RELEASE_BODY//<!-- DIGEST PLACEHOLDER -->/\`${DIGEST}\`}"
               env:
                 DIGEST: ${{ steps.package.outputs.digest }}
                 GITHUB_TOKEN: ${{ secrets.JAVA_GITHUB_TOKEN }}
             - if: ${{ false }}
               uses: docker://ghcr.io/buildpacks/actions/registry/request-add-entry:4.0.1
               with:
-                address: ghcr.io/garethjevans/apache-tomcat@${{ steps.package.outputs.digest }}
+                address: ghcr.io/garethjevans/apache-tomee@${{ steps.package.outputs.digest }}
                 id: garethjevans/apache-tomee
                 token: ${{ secrets.JAVA_GITHUB_TOKEN }}
                 version: ${{ steps.version.outputs.version }}
