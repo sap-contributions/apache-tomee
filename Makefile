@@ -25,6 +25,7 @@ pack-tomee-9: integrationtests/test-jaxrs-tomee-jakarta/target/test-jaxrs-tomee-
 		--buildpack garethjevans_apache_tomee.cnb \
 		--path integrationtests/test-jaxrs-tomee-jakarta/target/test-jaxrs-tomee-jakarta-0.1-SNAPSHOT.war \
 		--clear-cache \
+		-e BP_JAVA_APP_SERVER=tomee \
 		-e BP_JVM_VERSION=8 \
 		-e BP_TOMEE_VERSION=9.0.0-M7
 
@@ -36,6 +37,7 @@ pack-tomee-8: integrationtests/test-jaxrs-tomee/target/test-jaxrs-tomee-0.1-SNAP
 		--buildpack garethjevans_apache_tomee.cnb \
 		--path integrationtests/test-jaxrs-tomee/target/test-jaxrs-tomee-0.1-SNAPSHOT.war \
 		--clear-cache \
+		-e BP_JAVA_APP_SERVER=tomee \
 		-e BP_JVM_VERSION=8 \
 		-e BP_TOMEE_VERSION=8.*
 
@@ -47,6 +49,7 @@ pack-tomee-7: integrationtests/test-jaxrs-tomee/target/test-jaxrs-tomee-0.1-SNAP
 		--buildpack garethjevans_apache_tomee.cnb \
 		--path integrationtests/test-jaxrs-tomee/target/test-jaxrs-tomee-0.1-SNAPSHOT.war \
 		--clear-cache \
+		-e BP_JAVA_APP_SERVER=tomee \
 		-e BP_JVM_VERSION=8 \
 		-e BP_TOMEE_VERSION=7.*
 
