@@ -89,7 +89,7 @@ api = "0.7"
     purl = "pkg:generic/apache-tomee@8.0.9"
     sha256 = "0ebe8c60ad454caf54c1af43c0540e3e0e63d058f21e5b3edc96904fbd09f4f1"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-8.0.9/apache-tomee-8.0.9-microprofile.tar.gz"
+    uri = "https://downloads.apache.org/tomee/tomee-8.0.9/apache-tomee-8.0.9-microprofile.tar.gz"
     version = "8.0.9"
 
     [[metadata.dependencies.licenses]]
