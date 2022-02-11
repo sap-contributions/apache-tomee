@@ -75,7 +75,7 @@ api = "0.7"
     purl = "pkg:generic/apache-tomee@7.1.4"
     sha256 = "af8d2e3596a3df4c47db2e9386db1212bc17f688e547e3941d6c958821e859b0"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-7.1.4/apache-tomee-7.1.4-microprofile.tar.gz"
+    uri = "https://downloads.apache.org/tomee/tomee-7.1.4/apache-tomee-7.1.4-microprofile.tar.gz"
     version = "7.1.4"
 
     [[metadata.dependencies.licenses]]
