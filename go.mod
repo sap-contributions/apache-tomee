@@ -6,7 +6,7 @@ require (
 	github.com/buildpacks/libcnb v1.25.5
 	github.com/heroku/color v0.0.6
 	github.com/onsi/gomega v1.18.1
-	github.com/paketo-buildpacks/libjvm v1.34.0
+	github.com/paketo-buildpacks/libjvm v1.35.0
 	github.com/paketo-buildpacks/libpak v1.58.0
 	github.com/sclevine/spec v1.4.0
 )
@@ -23,14 +23,14 @@ require (
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/mitchellh/hashstructure/v2 v2.0.2 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
-	github.com/pavel-v-chernykh/keystore-go/v4 v4.2.0 // indirect
+	github.com/pavel-v-chernykh/keystore-go/v4 v4.3.0 // indirect
 	github.com/pelletier/go-toml v1.9.4 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.2.0 // indirect
 	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
 	golang.org/x/net v0.0.0-20220114011407-0dd24b26b47d // indirect
-	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
+	golang.org/x/sys v0.0.0-20220207234003-57398862261d // indirect
 	golang.org/x/text v0.3.7 // indirect
 	gopkg.in/check.v1 v1.0.0-20200902074654-038fdea0a05b // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
