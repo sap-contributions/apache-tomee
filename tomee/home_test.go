@@ -50,7 +50,7 @@ func testHome(t *testing.T, context spec.G, it spec.S) {
 
 	it("contributes catalina home", func() {
 		dep := libpak.BuildpackDependency{
-			ID:     "tomee",
+			ID:     "tomee-microprofile",
 			URI:    "https://localhost/stub-tomee.tar.gz",
 			SHA256: "26a0f0d1782027e7849389cb975a40cd8e69497d19946442881d61bd5f1756bf",
 			PURL:   "pkg:generic/tomee@1.1.1",

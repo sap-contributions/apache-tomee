@@ -49,10 +49,12 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		sbomScanner = mocks.SBOMScanner{}
 		sbomScanner.On("ScanLaunch", ctx.Application.Path, libcnb.SyftJSON, libcnb.CycloneDXJSON).Return(nil)
 
+		Expect(os.Setenv("BP_TOMEE_DISTRIBUTION", "microprofile")).To(Succeed())
 	})
 
 	it.After(func() {
 		Expect(os.RemoveAll(ctx.Application.Path)).To(Succeed())
+		Expect(os.Unsetenv("BP_TOMEE_DISTRIBUTION")).To(Succeed())
 	})
 
 	it("does not contribute Tomee if no WEB-INF", func() {
@@ -83,7 +85,7 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		ctx.Buildpack.Metadata = map[string]interface{}{
 			"dependencies": []map[string]interface{}{
 				{
-					"id":      "tomee",
+					"id":      "tomee-microprofile",
 					"version": "1.1.1",
 					"stacks":  []interface{}{"test-stack-id"},
 					"purl":    "pkg:generic/tomee@1.1.1",
@@ -125,7 +127,7 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		))
 
 		Expect(result.Layers).To(HaveLen(3))
-		Expect(result.Layers[0].Name()).To(Equal("tomee"))
+		Expect(result.Layers[0].Name()).To(Equal("tomee-microprofile"))
 		Expect(result.Layers[1].Name()).To(Equal("helper"))
 		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"access-logging-support"}))
 		Expect(result.Layers[2].Name()).To(Equal("catalina-base"))
@@ -143,7 +145,7 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		ctx.Buildpack.Metadata = map[string]interface{}{
 			"dependencies": []map[string]interface{}{
 				{
-					"id":      "tomee",
+					"id":      "tomee-microprofile",
 					"version": "1.1.2",
 					"stacks":  []interface{}{libpak.TinyStackID},
 					"purl":    "pkg:generic/tomee@1.1.1",
@@ -202,7 +204,7 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		}
 
 		Expect(result.Layers).To(HaveLen(3))
-		Expect(result.Layers[0].Name()).To(Equal("tomee"))
+		Expect(result.Layers[0].Name()).To(Equal("tomee-microprofile"))
 		Expect(result.Layers[1].Name()).To(Equal("helper"))
 		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"access-logging-support"}))
 		Expect(result.Layers[2].Name()).To(Equal("catalina-base"))
@@ -214,19 +216,21 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 	context("$BP_TOMEE_VERSION", func() {
 		it.Before(func() {
 			Expect(os.Setenv("BP_TOMEE_VERSION", "1.1.1")).To(Succeed())
+			Expect(os.Setenv("BP_TOMEE_DISTRIBUTION", "microprofile")).To(Succeed())
 		})
 
 		it.After(func() {
 			Expect(os.Unsetenv("BP_TOMEE_VERSION")).To(Succeed())
+			Expect(os.Unsetenv("BP_TOMEE_DISTRIBUTION")).To(Succeed())
 		})
 
-		it("selects version based on $BP_TOMEE_VERSION", func() {
+		it("selects version based on $BP_TOMEE_VERSION & $BP_TOMEE_DISTRIBUTION", func() {
 			Expect(os.MkdirAll(filepath.Join(ctx.Application.Path, "WEB-INF"), 0755)).To(Succeed())
 
 			ctx.Buildpack.Metadata = map[string]interface{}{
 				"dependencies": []map[string]interface{}{
 					{
-						"id":      "tomee",
+						"id":      "tomee-microprofile",
 						"version": "1.1.1",
 						"stacks":  []interface{}{"test-stack-id"},
 					},
@@ -267,12 +271,14 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 			Expect(os.Setenv("BP_TOMEE_EXT_CONF_SHA256", "test-sha256")).To(Succeed())
 			Expect(os.Setenv("BP_TOMEE_EXT_CONF_URI", "test-uri")).To(Succeed())
 			Expect(os.Setenv("BP_TOMEE_EXT_CONF_VERSION", "test-version")).To(Succeed())
+			Expect(os.Setenv("BP_TOMEE_DISTRIBUTION", "microprofile")).To(Succeed())
 		})
 
 		it.After(func() {
 			Expect(os.Unsetenv("BP_TOMEE_EXT_CONF_SHA256")).To(Succeed())
 			Expect(os.Unsetenv("BP_TOMEE_EXT_CONF_URI")).To(Succeed())
 			Expect(os.Unsetenv("BP_TOMEE_EXT_CONF_VERSION")).To(Succeed())
+			Expect(os.Unsetenv("BP_TOMEE_DISTRIBUTION")).To(Succeed())
 		})
 
 		it("contributes external configuration when $BP_TOMEE_EXT_CONF_URI is set", func() {
@@ -281,7 +287,7 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 			ctx.Buildpack.Metadata = map[string]interface{}{
 				"dependencies": []map[string]interface{}{
 					{
-						"id":      "tomee",
+						"id":      "tomee-microprofile",
 						"version": "1.1.1",
 						"stacks":  []interface{}{"test-stack-id"},
 					},

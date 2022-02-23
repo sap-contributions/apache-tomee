@@ -83,7 +83,8 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 	dc.Logger = b.Logger
 
 	v, _ := cr.Resolve("BP_TOMEE_VERSION")
-	tomeeDep, err := dr.Resolve("tomee", v)
+	d, _ := cr.Resolve("BP_TOMEE_DISTRIBUTION")
+	tomeeDep, err := dr.Resolve(fmt.Sprintf("tomee-%s", d), v)
 	if err != nil {
 		return libcnb.BuildResult{}, fmt.Errorf("unable to find dependency\n%w", err)
 	}

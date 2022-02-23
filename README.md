@@ -5,7 +5,7 @@ The Apache Tomee Buildpack is a Cloud Native Buildpack that contributes Apache T
 This buildpack will participate all the following conditions are met
 
 * `<APPLICATION_ROOT>/WEB-INF` exists
-* `Main-Class` is NOT defined in the mainfest
+* `Main-Class` is NOT defined in the manifest
 * `BP_JAVA_APP_SERVER` is set to `tomee`
 
 The buildpack will do the following:
@@ -39,7 +39,8 @@ When this buildpack runs on the [Tiny stack](https://paketo.io/docs/concepts/sta
 | `$BP_TOMEE_EXT_CONF_URI` | The download URI of the external configuration package
 | `$BP_TOMEE_EXT_CONF_VERSION` | The version of the external configuration package
 | `$BP_TOMEE_VERSION` |  Configure a specific Tomee version.  This value must _exactly_ match a version available in the buildpack so typically it would configured to a wildcard such as `9.*`.
-| `BPL_TOMEE_ACCESS_LOGGING_ENABLED` | Whether access logging should be activated.  Defaults to inactive.
+| `$BP_TOMEE_DISTRIBUTION` |  Configure a specific Tomee distribution.  This value must be one of `microprofile`, `webprofile`, `plus` or `plume`. Defaults to `microprofile`.
+| `$BPL_TOMEE_ACCESS_LOGGING_ENABLED` | Whether access logging should be activated.  Defaults to inactive.
 
 ### External Configuration Package
 The artifacts that the repository provides must be in TAR format and must follow the Tomee archive structure:
