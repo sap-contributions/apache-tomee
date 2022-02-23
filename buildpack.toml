@@ -68,10 +68,16 @@ api = "0.7"
     description = "the Tomee version"
     name = "BP_TOMEE_VERSION"
 
+  [[metadata.configurations]]
+    build = true
+    default = "microprofile"
+    description = "the Tomee distribution"
+    name = "BP_TOMEE_DISTRIBUTION"
+
   [[metadata.dependencies]]
     cpes = ["cpe:2.3:a:apache:tomee:7.1.4:*:*:*:*:*:*:*"]
-    id = "tomee"
-    name = "Apache Tomee"
+    id = "tomee-microprofile"
+    name = "Apache Tomee - Microprofile"
     purl = "pkg:generic/apache-tomee@7.1.4"
     sha256 = "af8d2e3596a3df4c47db2e9386db1212bc17f688e547e3941d6c958821e859b0"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
@@ -84,8 +90,8 @@ api = "0.7"
 
   [[metadata.dependencies]]
     cpes = ["cpe:2.3:a:apache:tomee:8.0.10:*:*:*:*:*:*:*"]
-    id = "tomee"
-    name = "Apache Tomee"
+    id = "tomee-microprofile"
+    name = "Apache Tomee - Microprofile"
     purl = "pkg:generic/apache-tomee@8.0.10"
     sha256 = "e7893d95d8c63dc59c5456f24d6d1196f94f840ee1e131d8255f10875422e7c5"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
@@ -98,8 +104,8 @@ api = "0.7"
 
   [[metadata.dependencies]]
     cpes = ["cpe:2.3:a:apache:tomee:9.0.0-M7:*:*:*:*:*:*:*"]
-    id = "tomee"
-    name = "Apache Tomee"
+    id = "tomee-microprofile"
+    name = "Apache Tomee - Microprofile"
     purl = "pkg:generic/apache-tomee@9.0.0-M7"
     sha256 = "6058f6318f57f82a96700c701706d4f296d04b5b867a71cb6a01bb8686f83200"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
