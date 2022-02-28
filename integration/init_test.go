@@ -18,7 +18,7 @@ import (
 var (
 	buildpack          string
 	//buildPlanBuildpack string
-	//offlineBuildpack   string
+	offlineBuildpack   string
 	root               string
 
 	buildpackInfo struct {
@@ -74,5 +74,6 @@ func TestIntegration(t *testing.T) {
 
 	suite := spec.New("Integration", spec.Report(report.Terminal{}), spec.Parallel())
 	suite("Default", testDefault)
+	//suite("Offline", testOffline)
 	suite.Run(t)
 }

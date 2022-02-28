@@ -13,7 +13,7 @@ import (
 	. "github.com/paketo-buildpacks/occam/matchers"
 )
 
-func testDefault(t *testing.T, context spec.G, it spec.S) {
+func testOffline(t *testing.T, context spec.G, it spec.S) {
 	var (
 		Expect     = NewWithT(t).Expect
 		Eventually = NewWithT(t).Eventually
@@ -64,10 +64,10 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 					"paketo-buildpacks/ca-certificates@3.0.2",
 					"paketo-buildpacks/bellsoft-liberica",
 					"paketo-buildpacks/maven",
-					buildpack).
+					offlineBuildpack).
 				WithEnv(map[string]string{
-					"BP_JAVA_APP_SERVER": "tomee",
-					"BP_MAVEN_BUILT_ARTIFACT": "test-jaxrs-tomee/target/*.war",
+					"BP_JAVA_APP_SERVER":"tomee",
+					"BP_MAVEN_BUILT_ARTIFACT":"test-jaxrs-tomee/target/*.war",
 					"BP_MAVEN_BUILD_ARGUMENTS": "-Dmaven.test.skip=true package --no-transfer-progress",
 				}).
 				Execute(name, source)
@@ -95,7 +95,7 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 					"paketo-buildpacks/ca-certificates@3.0.2",
 					"paketo-buildpacks/bellsoft-liberica",
 					"paketo-buildpacks/maven",
-					buildpack).
+					offlineBuildpack).
 				WithEnv(map[string]string{
 					"BP_JAVA_APP_SERVER":"tomee",
 					"BP_MAVEN_BUILT_ARTIFACT":"test-jaxrs-tomee/target/*.war",
@@ -127,7 +127,7 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 					"paketo-buildpacks/ca-certificates@3.0.2",
 					"paketo-buildpacks/bellsoft-liberica",
 					"paketo-buildpacks/maven",
-					buildpack).
+					offlineBuildpack).
 				WithEnv(map[string]string{
 					"BP_JAVA_APP_SERVER":"tomee",
 					"BP_MAVEN_BUILT_ARTIFACT":"test-jaxrs-tomee-jakarta/target/*.war",
