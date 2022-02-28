@@ -81,19 +81,70 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 			Expect(err).NotTo(HaveOccurred())
 
 			Eventually(container).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
+		})
 
-			//Expect(logs).To(ContainLines(
-			//	MatchRegexp(fmt.Sprintf(`%s \d+\.\d+\.\d+`, buildpackInfo.Buildpack.Name)),
-			//	"  Resolving Go version",
-			//	"    Candidate version sources (in priority order):",
-			//	"      <unknown> -> \"\"",
-			//	"",
-			//	MatchRegexp(`    Selected Go version \(using <unknown>\): 1\.16\.\d+`),
-			//	"",
-			//	"  Executing build process",
-			//	MatchRegexp(`    Installing Go 1\.16\.\d+`),
-			//	MatchRegexp(`      Completed in ([0-9]*(\.[0-9]*)?[a-z]+)+`),
-			//))
+		it("builds with tomee 7.*", func() {
+			var (
+				logs fmt.Stringer
+				err  error
+			)
+
+			image, logs, err = pack.WithNoColor().Build.
+				WithPullPolicy("never").
+				WithBuildpacks("paketo-buildpacks/syft",
+					"paketo-buildpacks/ca-certificates@3.0.2",
+					"paketo-buildpacks/bellsoft-liberica",
+					"paketo-buildpacks/maven",
+					buildpack).
+				WithEnv(map[string]string{
+					"BP_JAVA_APP_SERVER":"tomee",
+					"BP_MAVEN_BUILT_ARTIFACT":"test-jaxrs-tomee/target/*.war",
+					"BP_TOMEE_VERSION": "7.*",
+				}).
+				Execute(name, source)
+			Expect(err).ToNot(HaveOccurred(), logs.String)
+
+			container, err = docker.Container.Run.
+				//WithCommand("go run main.go").
+				WithEnv(map[string]string{"PORT": "8080"}).
+				WithPublish("8080").
+				WithPublishAll().
+				Execute(image.ID)
+			Expect(err).NotTo(HaveOccurred())
+
+			Eventually(container).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
+		})
+
+		it("builds with tomee 9.*", func() {
+			var (
+				logs fmt.Stringer
+				err  error
+			)
+
+			image, logs, err = pack.WithNoColor().Build.
+				WithPullPolicy("never").
+				WithBuildpacks("paketo-buildpacks/syft",
+					"paketo-buildpacks/ca-certificates@3.0.2",
+					"paketo-buildpacks/bellsoft-liberica",
+					"paketo-buildpacks/maven",
+					buildpack).
+				WithEnv(map[string]string{
+					"BP_JAVA_APP_SERVER":"tomee",
+					"BP_MAVEN_BUILT_ARTIFACT":"test-jaxrs-tomee-jakarta/target/*.war",
+					"BP_TOMEE_VERSION": "9.0.0-M7",
+				}).
+				Execute(name, source)
+			Expect(err).ToNot(HaveOccurred(), logs.String)
+
+			container, err = docker.Container.Run.
+				//WithCommand("go run main.go").
+				WithEnv(map[string]string{"PORT": "8080"}).
+				WithPublish("8080").
+				WithPublishAll().
+				Execute(image.ID)
+			Expect(err).NotTo(HaveOccurred())
+
+			Eventually(container).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
 		})
 	})
 }
