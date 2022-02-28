@@ -54,7 +54,8 @@ func TestIntegration(t *testing.T) {
 	root, err = filepath.Abs("./..")
 	Expect(err).ToNot(HaveOccurred())
 
-	buildpackStore := occam.NewBuildpackStore().WithPackager(packagers.NewLibpak())
+	buildpackStore := occam.NewBuildpackStore().
+		WithPackager(packagers.NewLibpak())
 
 	buildpack, err = buildpackStore.Get.
 		WithVersion("1.2.3").
