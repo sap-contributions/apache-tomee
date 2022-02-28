@@ -59,7 +59,7 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 			)
 
 			image, logs, err = pack.WithNoColor().Build.
-				WithPullPolicy("never").
+				WithPullPolicy("always").
 				WithBuilder("paketobuildpacks/builder:base").
 				WithBuildpacks("paketo-buildpacks/syft",
 					"paketo-buildpacks/ca-certificates@3.0.2",
@@ -91,7 +91,7 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 			)
 
 			image, logs, err = pack.WithNoColor().Build.
-				WithPullPolicy("never").
+				WithPullPolicy("always").
 				WithBuilder("paketobuildpacks/builder:base").
 				WithBuildpacks("paketo-buildpacks/syft",
 					"paketo-buildpacks/ca-certificates@3.0.2",
@@ -124,7 +124,7 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 			)
 
 			image, logs, err = pack.WithNoColor().Build.
-				WithPullPolicy("never").
+				WithPullPolicy("always").
 				WithBuilder("paketobuildpacks/builder:base").
 				WithBuildpacks("paketo-buildpacks/syft",
 					"paketo-buildpacks/ca-certificates@3.0.2",
