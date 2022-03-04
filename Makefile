@@ -17,7 +17,7 @@ integrationtests/test-jaxrs-tomee/target/test-jaxrs-tomee-0.1-SNAPSHOT.war:
 integrationtests/test-jaxrs-tomee-jakarta/target/test-jaxrs-tomee-jakarta-0.1-SNAPSHOT.war:
 	cd integrationtests && mvn clean package --no-transfer-progress && cd ..
 
-pack-tomee-9-microprofile: integrationtests/test-jaxrs-tomee-jakarta/target/test-jaxrs-tomee-jakarta-0.1-SNAPSHOT.war buildpack
+pack-tomee-9-microprofile: integration/testdata/test-jaxrs-tomee-jakarta buildpack
 	pack build $(IMAGE)-v9-microprofile \
 		--buildpack paketo-buildpacks/syft@1.5.0 \
 		--buildpack paketo-buildpacks/ca-certificates@2.4.2 \
@@ -29,7 +29,7 @@ pack-tomee-9-microprofile: integrationtests/test-jaxrs-tomee-jakarta/target/test
 		-e BP_JVM_VERSION=8 \
 		-e BP_TOMEE_VERSION=9.0.0-M7
 
-pack-tomee-8-microprofile: integrationtests/test-jaxrs-tomee/target/test-jaxrs-tomee-0.1-SNAPSHOT.war buildpack
+pack-tomee-8-microprofile: integration/testdata/test-jaxrs-tomee buildpack
 	pack build $(IMAGE)-v8-microprofile \
 		--buildpack paketo-buildpacks/syft@1.5.0 \
 		--buildpack paketo-buildpacks/ca-certificates@2.4.2 \
@@ -41,7 +41,7 @@ pack-tomee-8-microprofile: integrationtests/test-jaxrs-tomee/target/test-jaxrs-t
 		-e BP_JVM_VERSION=8 \
 		-e BP_TOMEE_VERSION=8.*
 
-pack-tomee-8-webprofile: integrationtests/test-jaxrs-tomee/target/test-jaxrs-tomee-0.1-SNAPSHOT.war buildpack
+pack-tomee-8-webprofile: integration/testdata/test-jaxrs-tomee buildpack
 	pack build $(IMAGE)-v8-webprofile \
 		--buildpack paketo-buildpacks/syft@1.5.0 \
 		--buildpack paketo-buildpacks/ca-certificates@2.4.2 \
@@ -54,7 +54,7 @@ pack-tomee-8-webprofile: integrationtests/test-jaxrs-tomee/target/test-jaxrs-tom
 		-e BP_TOMEE_VERSION=8.* \
 		-e BP_TOMEE_DISTRIBUTION=webprofile
 
-pack-tomee-8-plus: integrationtests/test-jaxrs-tomee/target/test-jaxrs-tomee-0.1-SNAPSHOT.war buildpack
+pack-tomee-8-plus: integration/testdata/test-jaxrs-tomee buildpack
 	pack build $(IMAGE)-v8-plus \
 		--buildpack paketo-buildpacks/syft@1.5.0 \
 		--buildpack paketo-buildpacks/ca-certificates@2.4.2 \
@@ -67,7 +67,7 @@ pack-tomee-8-plus: integrationtests/test-jaxrs-tomee/target/test-jaxrs-tomee-0.1
 		-e BP_TOMEE_VERSION=8.* \
 		-e BP_TOMEE_DISTRIBUTION=webprofile
 
-pack-tomee-8-plume: integrationtests/test-jaxrs-tomee/target/test-jaxrs-tomee-0.1-SNAPSHOT.war buildpack
+pack-tomee-8-plume: integration/testdata/test-jaxrs-tomee buildpack
 	pack build $(IMAGE)-v8-plume \
 		--buildpack paketo-buildpacks/syft@1.5.0 \
 		--buildpack paketo-buildpacks/ca-certificates@2.4.2 \
@@ -80,7 +80,7 @@ pack-tomee-8-plume: integrationtests/test-jaxrs-tomee/target/test-jaxrs-tomee-0.
 		-e BP_TOMEE_VERSION=8.* \
 		-e BP_TOMEE_DISTRIBUTION=plume
 
-pack-tomee-7-microprofile: integrationtests/test-jaxrs-tomee/target/test-jaxrs-tomee-0.1-SNAPSHOT.war buildpack
+pack-tomee-7-microprofile: integration/testdata/test-jaxrs-tomee buildpack
 	pack build $(IMAGE)-v7-microprofile \
 		--buildpack paketo-buildpacks/syft@1.5.0 \
 		--buildpack paketo-buildpacks/ca-certificates@2.4.2 \
@@ -111,7 +111,7 @@ build:
 	go build ./...
 
 test:
-	go test ./...
+	go test -v -timeout 20m ./...
 
 run: pack
 	docker run -p 8080:8080 \

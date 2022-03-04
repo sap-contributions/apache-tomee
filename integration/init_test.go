@@ -31,19 +31,12 @@ var (
 )
 
 func TestIntegration(t *testing.T) {
+	if testing.Short() {
+		t.Skip("Skip integration tests in short mode")
+	}
 	Expect := NewWithT(t).Expect
 
 	format.MaxLength = 0
-
-	//var config struct {
-	//	BuildPlan []string `json:"buildplan"`
-	//}
-
-	//file, err := os.Open("../integration.json")
-	//Expect(err).NotTo(HaveOccurred())
-	//defer file.Close()
-
-	//Expect(json.NewDecoder(file).Decode(&config)).To(Succeed())
 
 	file, err := os.Open("../buildpack.toml")
 	Expect(err).NotTo(HaveOccurred())
@@ -62,20 +55,9 @@ func TestIntegration(t *testing.T) {
 		Execute(root)
 	Expect(err).NotTo(HaveOccurred())
 
-	//offlineBuildpack, err = buildpackStore.Get.
-	//	WithOfflineDependencies().
-	//	WithVersion("1.2.3").
-	//	Execute(root)
-	//Expect(err).NotTo(HaveOccurred())
-
-	//buildPlanBuildpack, err = buildpackStore.Get.
-	//	Execute(config.BuildPlan)
-	//Expect(err).NotTo(HaveOccurred())
-
 	SetDefaultEventuallyTimeout(10 * time.Second)
 
 	suite := spec.New("Integration", spec.Report(report.Terminal{}), spec.Parallel())
 	suite("Default", testDefault)
-	//suite("Offline", testOffline)
 	suite.Run(t)
 }

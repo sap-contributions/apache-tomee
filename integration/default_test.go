@@ -41,7 +41,7 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 			name, err = occam.RandomName()
 			Expect(err).NotTo(HaveOccurred())
 
-			source, err = occam.Source(filepath.Join("..", "integrationtests"))
+			source, err = occam.Source(filepath.Join("testdata"))
 			Expect(err).NotTo(HaveOccurred())
 		})
 
@@ -59,7 +59,7 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 			)
 
 			image, logs, err = pack.WithNoColor().Build.
-				WithPullPolicy("always").
+				WithPullPolicy("if-not-present").
 				WithBuilder("paketobuildpacks/builder:base").
 				WithBuildpacks("paketo-buildpacks/syft",
 					"paketo-buildpacks/ca-certificates@3.0.2",
@@ -84,70 +84,36 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 			Eventually(container).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
 		})
 
-		it("builds with tomee 7.*", func() {
-			var (
-				logs fmt.Stringer
-				err  error
-			)
-
-			image, logs, err = pack.WithNoColor().Build.
-				WithPullPolicy("always").
-				WithBuilder("paketobuildpacks/builder:base").
-				WithBuildpacks("paketo-buildpacks/syft",
-					"paketo-buildpacks/ca-certificates@3.0.2",
-					"paketo-buildpacks/bellsoft-liberica",
-					"paketo-buildpacks/maven",
-					buildpack).
-				WithEnv(map[string]string{
-					"BP_JAVA_APP_SERVER":"tomee",
-					"BP_MAVEN_BUILT_ARTIFACT":"test-jaxrs-tomee/target/*.war",
-					"BP_MAVEN_BUILD_ARGUMENTS": "-Dmaven.test.skip=true package --no-transfer-progress",
-					"BP_TOMEE_VERSION": "7.*",
-				}).
-				Execute(name, source)
-			Expect(err).ToNot(HaveOccurred(), logs.String)
-
-			container, err = docker.Container.Run.
-				WithEnv(map[string]string{"PORT": "8080"}).
-				WithPublish("8080").
-				WithPublishAll().
-				Execute(image.ID)
-			Expect(err).NotTo(HaveOccurred())
-
-			Eventually(container).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
-		})
-
-		it("builds with tomee 9.*", func() {
-			var (
-				logs fmt.Stringer
-				err  error
-			)
-
-			image, logs, err = pack.WithNoColor().Build.
-				WithPullPolicy("always").
-				WithBuilder("paketobuildpacks/builder:base").
-				WithBuildpacks("paketo-buildpacks/syft",
-					"paketo-buildpacks/ca-certificates@3.0.2",
-					"paketo-buildpacks/bellsoft-liberica",
-					"paketo-buildpacks/maven",
-					buildpack).
-				WithEnv(map[string]string{
-					"BP_JAVA_APP_SERVER":"tomee",
-					"BP_MAVEN_BUILT_ARTIFACT":"test-jaxrs-tomee-jakarta/target/*.war",
-					"BP_MAVEN_BUILD_ARGUMENTS": "-Dmaven.test.skip=true package --no-transfer-progress",
-					"BP_TOMEE_VERSION": "9.0.0-M7",
-				}).
-				Execute(name, source)
-			Expect(err).ToNot(HaveOccurred(), logs.String)
-
-			container, err = docker.Container.Run.
-				WithEnv(map[string]string{"PORT": "8080"}).
-				WithPublish("8080").
-				WithPublishAll().
-				Execute(image.ID)
-			Expect(err).NotTo(HaveOccurred())
-
-			Eventually(container).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
-		})
+		//it("builds on tiny", func() {
+		//	var (
+		//		logs fmt.Stringer
+		//		err  error
+		//	)
+		//
+		//	image, logs, err = pack.WithNoColor().Build.
+		//		WithPullPolicy("if-not-present").
+		//		WithBuilder("paketobuildpacks/builder:tiny").
+		//		WithBuildpacks("paketo-buildpacks/syft",
+		//			"paketo-buildpacks/ca-certificates@3.0.2",
+		//			"paketo-buildpacks/bellsoft-liberica",
+		//			"paketo-buildpacks/maven",
+		//			buildpack).
+		//		WithEnv(map[string]string{
+		//			"BP_JAVA_APP_SERVER": "tomee",
+		//			"BP_MAVEN_BUILT_ARTIFACT": "test-jaxrs-tomee/target/*.war",
+		//			"BP_MAVEN_BUILD_ARGUMENTS": "-Dmaven.test.skip=true package --no-transfer-progress",
+		//		}).
+		//		Execute(name, source)
+		//	Expect(err).ToNot(HaveOccurred(), logs.String)
+		//
+		//	container, err = docker.Container.Run.
+		//		WithEnv(map[string]string{"PORT": "8080"}).
+		//		WithPublish("8080").
+		//		WithPublishAll().
+		//		Execute(image.ID)
+		//	Expect(err).NotTo(HaveOccurred())
+		//
+		//	Eventually(container).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
+		//})
 	})
 }
