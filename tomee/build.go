@@ -84,7 +84,8 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 
 	v, _ := cr.Resolve("BP_TOMEE_VERSION")
 	d, _ := cr.Resolve("BP_TOMEE_DISTRIBUTION")
-	tomeeDep, err := dr.Resolve(fmt.Sprintf("tomee-%s", d), v)
+	tomeeName := fmt.Sprintf("tomee-%s", d)
+	tomeeDep, err := dr.Resolve(tomeeName, v)
 	if err != nil {
 		return libcnb.BuildResult{}, fmt.Errorf("unable to find dependency\n%w", err)
 	}
@@ -150,7 +151,7 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 
 	if context.StackID == libpak.TinyStackID {
 		command, arguments = b.tinyStartCommand(
-			filepath.Join(context.Layers.Path, "tomee"),
+			filepath.Join(context.Layers.Path, tomeeName),
 			filepath.Join(context.Layers.Path, "catalina-base"),
 			loggingDependency)
 	}
