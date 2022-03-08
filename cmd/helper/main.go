@@ -17,6 +17,8 @@
 package main
 
 import (
+	"fmt"
+	"github.com/buildpacks/libcnb"
 	"os"
 
 	"github.com/paketo-buildpacks/libpak/bard"
@@ -27,8 +29,13 @@ import (
 
 func main() {
 	sherpa.Execute(func() error {
+		bindings, err := libcnb.NewBindingsFromEnvironment()
+		if err != nil {
+			return fmt.Errorf("unable to read bindings from environment\n%w", err)
+		}
 		return sherpa.Helpers(map[string]sherpa.ExecD{
 			"access-logging-support": helper.AccessLoggingSupport{Logger: bard.NewLogger(os.Stdout)},
+			"dynamic-property-support": helper.DynamicPropertySupport{Logger: bard.NewLogger(os.Stdout), Bindings: bindings},
 		})
 	})
 }
