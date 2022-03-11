@@ -76,6 +76,7 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 				WithEnv(map[string]string{
 					"BP_JAVA_APP_SERVER": "tomee",
 					"BP_MAVEN_BUILT_ARTIFACT": "test-jaxrs-tomee/target/*.war",
+					"BP_MAVEN_BUILT_MODULE": "test-jaxrs-tomee",
 					"BP_MAVEN_BUILD_ARGUMENTS": "-Dmaven.test.skip=true package --no-transfer-progress",
 				}).
 				WithVolumes(fmt.Sprintf("%s/.m2:/home/cnb/.m2:rw", home)).
@@ -116,6 +117,7 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 				WithEnv(map[string]string{
 					"BP_JAVA_APP_SERVER": "tomee",
 					"BP_MAVEN_BUILT_ARTIFACT": "test-jaxrs-tomee/target/*.war",
+					"BP_MAVEN_BUILT_MODULE": "test-jaxrs-tomee",
 					"BP_MAVEN_BUILD_ARGUMENTS": "-Dmaven.test.skip=true package --no-transfer-progress",
 				}).
 				WithVolumes(fmt.Sprintf("%s/.m2:/home/cnb/.m2:rw", home)).
