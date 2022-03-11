@@ -1,7 +1,6 @@
 package integration_test
 
 import (
-	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -22,7 +21,6 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 
 		pack   occam.Pack
 		docker occam.Docker
-		home = os.Getenv("HOME")
 	)
 
 	it.Before(func() {
@@ -46,12 +44,6 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 
 			source, err = occam.Source(filepath.Join("testdata"))
 			Expect(err).NotTo(HaveOccurred())
-
-			m2Repo := fmt.Sprintf("%s/.m2", home)
-
-			if _, err := os.Stat(m2Repo); errors.Is(err, os.ErrNotExist) {
-				Expect(os.Mkdir(m2Repo, 0755)).To(Succeed())
-			}
 		})
 
 		it.After(func() {
@@ -86,7 +78,6 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 					"BP_MAVEN_BUILT_MODULE": "test-jaxrs-tomee",
 					"BP_MAVEN_BUILD_ARGUMENTS": "-Dmaven.test.skip=true package --no-transfer-progress",
 				}).
-				WithVolumes(fmt.Sprintf("%s/.m2:/home/cnb/.m2:rw", home)).
 				Execute(name, source)
 			Expect(err).ToNot(HaveOccurred(), logs.String)
 			fmt.Println(logs.String())
@@ -127,7 +118,6 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 					"BP_MAVEN_BUILT_MODULE": "test-jaxrs-tomee",
 					"BP_MAVEN_BUILD_ARGUMENTS": "-Dmaven.test.skip=true package --no-transfer-progress",
 				}).
-				WithVolumes(fmt.Sprintf("%s/.m2:/home/cnb/.m2:rw", home)).
 				Execute(name, source)
 			Expect(err).ToNot(HaveOccurred(), logs.String)
 			fmt.Println(logs.String())
