@@ -18,7 +18,6 @@ package tomee
 
 import (
 	"fmt"
-	"github.com/paketo-buildpacks/libpak/sherpa"
 	"os"
 	"path/filepath"
 
@@ -31,6 +30,7 @@ const (
 	PlanEntryJVMApplicationPackage = "jvm-application-package"
 	PlanEntryJRE                   = "jre"
 	PlanEntrySyft                  = "syft"
+	PlanEntryJavaApplicationServer = "java-app-server"
 )
 
 type Detect struct{}
@@ -45,23 +45,21 @@ func (d Detect) Detect(context libcnb.DetectContext) (libcnb.DetectResult, error
 		return libcnb.DetectResult{Pass: false}, nil
 	}
 
-	appServer := sherpa.GetEnvWithDefault("BP_JAVA_APP_SERVER", "tomcat")
-	if appServer != "tomee" {
-		return libcnb.DetectResult{Pass: false}, nil
-	}
-
 	result := libcnb.DetectResult{
 		Pass: true,
 		Plans: []libcnb.BuildPlan{
 			{
 				Provides: []libcnb.BuildPlanProvide{
 					{Name: PlanEntryJVMApplication},
+					{Name: PlanEntryJavaApplicationServer},
+
 				},
 				Requires: []libcnb.BuildPlanRequire{
 					{Name: PlanEntrySyft},
 					{Name: PlanEntryJRE, Metadata: map[string]interface{}{"launch": true}},
 					{Name: PlanEntryJVMApplicationPackage},
 					{Name: PlanEntryJVMApplication},
+					{Name: PlanEntryJavaApplicationServer},
 				},
 			},
 		},

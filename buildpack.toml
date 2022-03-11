@@ -79,6 +79,12 @@ api = "0.7"
     description = "the Tomee distribution"
     name = "BP_TOMEE_DISTRIBUTION"
 
+  [[metadata.configurations]]
+    build = true
+    description = "the application server to use"
+    default = ""
+    name = "BP_JAVA_APP_SERVER"
+
   [[metadata.dependencies]]
     cpes = ["cpe:2.3:a:apache:tomee-microprofile:7.1.4:*:*:*:*:*:*:*"]
     id = "tomee-microprofile"

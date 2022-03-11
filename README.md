@@ -33,6 +33,7 @@ When this buildpack runs on the [Tiny stack](https://paketo.io/docs/concepts/sta
 ## Configuration
 | Environment Variable | Description
 | -------------------- | -----------
+| `$BP_JAVA_APP_SERVER` | The application server to use. It defaults to the empty string, which allow the first Java application server in the buildpack order group to run. It can be set to `tomee` to force Tomee to be used. See the documentation for other Java application server buildpacks for other acceptable values. |
 | `$BP_TOMEE_CONTEXT_PATH` | The context path to mount the application at.  Defaults to empty (`ROOT`).
 | `$BP_TOMEE_EXT_CONF_SHA256` | The SHA256 hash of the external configuration package
 | `$BP_TOMEE_EXT_CONF_STRIP` | The number of directory levels to strip from the external configuration package.  Defaults to `0`.

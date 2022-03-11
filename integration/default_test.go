@@ -21,6 +21,7 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 
 		pack   occam.Pack
 		docker occam.Docker
+		home = os.Getenv("HOME")
 	)
 
 	it.Before(func() {
@@ -47,8 +48,12 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 		})
 
 		it.After(func() {
-			Expect(docker.Container.Remove.Execute(container.ID)).To(Succeed())
-			Expect(docker.Image.Remove.Execute(image.ID)).To(Succeed())
+			if container.ID != "" {
+				Expect(docker.Container.Remove.Execute(container.ID)).To(Succeed())
+			}
+			if image.ID != "" {
+				Expect(docker.Image.Remove.Execute(image.ID)).To(Succeed())
+			}
 			Expect(docker.Volume.Remove.Execute(occam.CacheVolumeNames(name))).To(Succeed())
 			Expect(os.RemoveAll(source)).To(Succeed())
 		})
@@ -73,8 +78,10 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 					"BP_MAVEN_BUILT_ARTIFACT": "test-jaxrs-tomee/target/*.war",
 					"BP_MAVEN_BUILD_ARGUMENTS": "-Dmaven.test.skip=true package --no-transfer-progress",
 				}).
+				WithVolumes(fmt.Sprintf("%s/.m2:/home/cnb/.m2:rw", home)).
 				Execute(name, source)
 			Expect(err).ToNot(HaveOccurred(), logs.String)
+			fmt.Println(logs.String())
 			elapsed := time.Since(start)
 			fmt.Printf("pack build took %s\n", elapsed)
 
@@ -111,8 +118,10 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 					"BP_MAVEN_BUILT_ARTIFACT": "test-jaxrs-tomee/target/*.war",
 					"BP_MAVEN_BUILD_ARGUMENTS": "-Dmaven.test.skip=true package --no-transfer-progress",
 				}).
+				WithVolumes(fmt.Sprintf("%s/.m2:/home/cnb/.m2:rw", home)).
 				Execute(name, source)
 			Expect(err).ToNot(HaveOccurred(), logs.String)
+			fmt.Println(logs.String())
 			elapsed := time.Since(start)
 			fmt.Printf("pack build took %s\n", elapsed)
 

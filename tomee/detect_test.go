@@ -58,14 +58,6 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 	})
 
 	context("WEB-INF not found", func() {
-		it.Before(func() {
-			Expect(os.Setenv("BP_JAVA_APP_SERVER", "tomee")).To(Succeed())
-		})
-
-		it.After(func() {
-			Expect(os.Unsetenv("BP_JAVA_APP_SERVER")).To(Succeed())
-		})
-		
 		it("requires jvm-application-artifact", func() {
 			Expect(detect.Detect(ctx)).To(Equal(libcnb.DetectResult{
 				Pass: true,
@@ -73,12 +65,14 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 					{
 						Provides: []libcnb.BuildPlanProvide{
 							{Name: "jvm-application"},
+							{Name: "java-app-server"},
 						},
 						Requires: []libcnb.BuildPlanRequire{
 							{Name: "syft"},
 							{Name: "jre", Metadata: map[string]interface{}{"launch": true}},
 							{Name: "jvm-application-package"},
 							{Name: "jvm-application"},
+							{Name: "java-app-server"},
 						},
 					},
 				},
@@ -89,11 +83,6 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 	context("WEB-INF found", func() {
 		it.Before(func() {
 			Expect(os.MkdirAll(filepath.Join(path, "WEB-INF"), 0755)).To(Succeed())
-			Expect(os.Setenv("BP_JAVA_APP_SERVER", "tomee")).To(Succeed())
-		})
-
-		it.After(func() {
-			Expect(os.Unsetenv("BP_JAVA_APP_SERVER")).To(Succeed())
 		})
 
 		it("requires and provides jvm-application-artifact", func() {
@@ -103,6 +92,7 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 					{
 						Provides: []libcnb.BuildPlanProvide{
 							{Name: "jvm-application"},
+							{Name: "java-app-server"},
 							{Name: "jvm-application-package"},
 						},
 						Requires: []libcnb.BuildPlanRequire{
@@ -110,25 +100,11 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 							{Name: "jre", Metadata: map[string]interface{}{"launch": true}},
 							{Name: "jvm-application-package"},
 							{Name: "jvm-application"},
+							{Name: "java-app-server"},
 						},
 					},
 				},
 			}))
-		})
-	})
-
-	context("Other application server requested", func() {
-		it.Before(func() {
-			Expect(os.MkdirAll(filepath.Join(path, "WEB-INF"), 0755)).To(Succeed())
-			Expect(os.Setenv("BP_JAVA_APP_SERVER", "other")).To(Succeed())
-		})
-
-		it.After(func() {
-			Expect(os.Unsetenv("BP_JAVA_APP_SERVER")).To(Succeed())
-		})
-
-		it("fails detection", func() {
-			Expect(detect.Detect(ctx)).To(Equal(libcnb.DetectResult{Pass: false}))
 		})
 	})
 }

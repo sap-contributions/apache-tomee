@@ -1,6 +1,7 @@
 package integration_test
 
 import (
+	"fmt"
 	"github.com/paketo-buildpacks/occam/packagers"
 	"os"
 	"path/filepath"
@@ -50,10 +51,13 @@ func TestIntegration(t *testing.T) {
 	buildpackStore := occam.NewBuildpackStore().
 		WithPackager(packagers.NewLibpak())
 
+	start := time.Now()
 	buildpack, err = buildpackStore.Get.
 		WithVersion("1.2.3").
 		Execute(root)
 	Expect(err).NotTo(HaveOccurred())
+	elapsed := time.Since(start)
+	fmt.Printf("pack buildpack took %s\n", elapsed)
 
 	SetDefaultEventuallyTimeout(10 * time.Second)
 

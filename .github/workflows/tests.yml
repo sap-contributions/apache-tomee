@@ -222,7 +222,7 @@ jobs:
 
                 set -euo pipefail
 
-                richgo test ./integration/...
+                richgo test ./integration/... -run Integration
               env:
                 RICHGO_FORCE_COLOR: "1"
     unit:
@@ -264,6 +264,6 @@ jobs:
 
                 set -euo pipefail
 
-                richgo test -short ./...
+                richgo test ./... -run Unit
               env:
                 RICHGO_FORCE_COLOR: "1"
