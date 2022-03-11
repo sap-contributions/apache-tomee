@@ -63,7 +63,6 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 				err  error
 			)
 
-			start := time.Now()
 			image, logs, err = pack.WithNoColor().WithVerbose().Build.
 				WithPullPolicy("if-not-present").
 				WithBuilder("paketobuildpacks/builder:base").
@@ -80,19 +79,13 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 				}).
 				Execute(name, source)
 			Expect(err).ToNot(HaveOccurred(), logs.String)
-			fmt.Println(logs.String())
-			elapsed := time.Since(start)
-			fmt.Printf("pack build took %s\n", elapsed)
 
-			start = time.Now()
 			container, err = docker.Container.Run.
 				WithEnv(map[string]string{"PORT": "8080"}).
 				WithPublish("8080").
 				WithPublishAll().
 				Execute(image.ID)
 			Expect(err).NotTo(HaveOccurred())
-			elapsed = time.Since(start)
-			fmt.Printf("docker run took %s\n", elapsed)
 
 			Eventually(container, time.Second*30).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
 		})
@@ -103,7 +96,6 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 				err  error
 			)
 
-			start := time.Now()
 			image, logs, err = pack.WithNoColor().WithVerbose().Build.
 				WithPullPolicy("if-not-present").
 				WithBuilder("paketobuildpacks/builder:tiny").
@@ -120,19 +112,13 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 				}).
 				Execute(name, source)
 			Expect(err).ToNot(HaveOccurred(), logs.String)
-			fmt.Println(logs.String())
-			elapsed := time.Since(start)
-			fmt.Printf("pack build took %s\n", elapsed)
 
-			start = time.Now()
 			container, err = docker.Container.Run.
 				WithEnv(map[string]string{"PORT": "8080"}).
 				WithPublish("8080").
 				WithPublishAll().
 				Execute(image.ID)
 			Expect(err).NotTo(HaveOccurred())
-			elapsed = time.Since(start)
-			fmt.Printf("docker run took %s\n", elapsed)
 
 			Eventually(container, time.Second*30).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
 		})
