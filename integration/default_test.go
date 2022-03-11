@@ -1,6 +1,7 @@
 package integration_test
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -45,6 +46,12 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 
 			source, err = occam.Source(filepath.Join("testdata"))
 			Expect(err).NotTo(HaveOccurred())
+
+			m2Repo := fmt.Sprintf("%s/.m2", home)
+
+			if _, err := os.Stat(m2Repo); errors.Is(err, os.ErrNotExist) {
+				Expect(os.Mkdir(m2Repo, 0755)).To(Succeed())
+			}
 		})
 
 		it.After(func() {
