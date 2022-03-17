@@ -6,10 +6,11 @@ require (
 	github.com/BurntSushi/toml v1.0.0
 	github.com/buildpacks/libcnb v1.25.5
 	github.com/heroku/color v0.0.6
+	github.com/magiconair/properties v1.8.5
 	github.com/onsi/gomega v1.18.1
 	github.com/paketo-buildpacks/libjvm v1.35.0
 	github.com/paketo-buildpacks/libpak v1.58.0
-	github.com/paketo-buildpacks/occam v0.6.0
+	github.com/paketo-buildpacks/occam v0.7.0
 	github.com/sclevine/spec v1.4.0
 )
 
@@ -20,7 +21,6 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.0 // indirect
 	github.com/imdario/mergo v0.3.12 // indirect
-	github.com/magiconair/properties v1.8.5 // indirect
 	github.com/mattn/go-colorable v0.1.11 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/mitchellh/hashstructure/v2 v2.0.2 // indirect

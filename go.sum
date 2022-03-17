@@ -652,8 +652,8 @@ github.com/paketo-buildpacks/libjvm v1.35.0 h1:sWIt5sSTDYsh3gwKGKdlLjpvZQDzdemWL
 github.com/paketo-buildpacks/libjvm v1.35.0/go.mod h1:pPfaz2cjwWKfUDrC1oYYNp1jNKm9a+gEVmUNH2vU0h0=
 github.com/paketo-buildpacks/libpak v1.58.0 h1:tId115h3SZn8IY8DQxRF36PwhMob4G9TVkWWDTD9MKY=
 github.com/paketo-buildpacks/libpak v1.58.0/go.mod h1:qxRaH+WrJYWEb4FZqYkMR9mdyNEsrNOq7bE7O4dXH1k=
-github.com/paketo-buildpacks/occam v0.6.0 h1:dVIKYY1rs9L/EJ//7iNLJAICNeFM1ZEo3RvLAwPub94=
-github.com/paketo-buildpacks/occam v0.6.0/go.mod h1:R5vxTO4dQs0CGX2Oekk1B2MZLTuSzyp4lzLM45YzjMs=
+github.com/paketo-buildpacks/occam v0.7.0 h1:PBXJ7zLfujHw6BaLp3oTysAEekkfZ5A8BfgWGyWfUKE=
+github.com/paketo-buildpacks/occam v0.7.0/go.mod h1:R5vxTO4dQs0CGX2Oekk1B2MZLTuSzyp4lzLM45YzjMs=
 github.com/paketo-buildpacks/packit/v2 v2.1.0 h1:0ecw6v216R2lMFlE3WTfuooYvJQ/KwsNRChRW8yRYbM=
 github.com/paketo-buildpacks/packit/v2 v2.1.0/go.mod h1:Ud1X7f9O6e4eGPZlY3pj0jnSa9oDK2L/ghvjmarTLSA=
 github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c/go.mod h1:lzWF7FIEvWOWxwDKqyGYQf6ZUaNfKdP144TG7ZOy1lc=
