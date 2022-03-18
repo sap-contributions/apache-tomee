@@ -6,7 +6,7 @@ require (
 	github.com/BurntSushi/toml v1.0.0
 	github.com/buildpacks/libcnb v1.25.5
 	github.com/heroku/color v0.0.6
-	github.com/magiconair/properties v1.8.5
+	github.com/magiconair/properties v1.8.6
 	github.com/onsi/gomega v1.18.1
 	github.com/paketo-buildpacks/libjvm v1.35.0
 	github.com/paketo-buildpacks/libpak v1.58.0
