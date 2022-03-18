@@ -18,6 +18,8 @@ package tomee
 
 import (
 	"fmt"
+	"github.com/paketo-buildpacks/libpak"
+	"github.com/paketo-buildpacks/libpak/bard"
 	"os"
 	"path/filepath"
 
@@ -31,11 +33,25 @@ const (
 	PlanEntryJRE                   = "jre"
 	PlanEntrySyft                  = "syft"
 	PlanEntryJavaApplicationServer = "java-app-server"
+	JavaAppServerTomee             = "tomee"
 )
 
-type Detect struct{}
+type Detect struct{
+	Logger bard.Logger
+}
 
 func (d Detect) Detect(context libcnb.DetectContext) (libcnb.DetectResult, error) {
+	cr, err := libpak.NewConfigurationResolver(context.Buildpack, nil)
+	if err != nil {
+		return libcnb.DetectResult{}, fmt.Errorf("unable to create configuration resolver\n%w", err)
+	}
+
+	appServer, _ := cr.Resolve("BP_JAVA_APP_SERVER")
+	if appServer != "" && appServer != JavaAppServerTomee {
+		d.Logger.Debugf("failed to match requested app server of [%s], buildpack supports [%s]", appServer, JavaAppServerTomee)
+		return libcnb.DetectResult{Pass: false}, nil
+	}
+
 	m, err := libjvm.NewManifest(context.Application.Path)
 	if err != nil {
 		return libcnb.DetectResult{}, fmt.Errorf("unable to read manifest\n%w", err)
@@ -59,7 +75,7 @@ func (d Detect) Detect(context libcnb.DetectContext) (libcnb.DetectResult, error
 					{Name: PlanEntryJRE, Metadata: map[string]interface{}{"launch": true}},
 					{Name: PlanEntryJVMApplicationPackage},
 					{Name: PlanEntryJVMApplication},
-					{Name: PlanEntryJavaApplicationServer},
+					{Name: PlanEntryJavaApplicationServer, Metadata: map[string]interface{}{"server": JavaAppServerTomee}},
 				},
 			},
 		},

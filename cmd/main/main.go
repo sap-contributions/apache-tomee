@@ -26,8 +26,9 @@ import (
 )
 
 func main() {
+	logger := bard.NewLogger(os.Stdout)
 	libpak.Main(
-		tomee.Detect{},
-		tomee.Build{Logger: bard.NewLogger(os.Stdout)},
+		tomee.Detect{Logger: logger},
+		tomee.Build{Logger: logger},
 	)
 }
