@@ -28,11 +28,11 @@ type AccessLoggingSupport struct {
 }
 
 func (a AccessLoggingSupport) Execute() (map[string]string, error) {
-	if _, ok := os.LookupEnv("BPL_TOMCAT_ACCESS_LOGGING_ENABLED"); !ok {
+	if _, ok := os.LookupEnv("BPL_TOMEE_ACCESS_LOGGING_ENABLED"); !ok {
 		return nil, nil
 	}
 
-	a.Logger.Info("Tomcat Access Logging Enabled")
+	a.Logger.Info("Tomee Access Logging Enabled")
 
 	var values []string
 	if s, ok := os.LookupEnv("JAVA_TOOL_OPTIONS"); ok {

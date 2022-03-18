@@ -26,28 +26,28 @@ import (
 	"github.com/garethjevans/apache-tomee/helper"
 )
 
-func testAccessLoggingSupport(t *testing.T, context spec.G, it spec.S) {
+func testEnvironmentPropertySourceSupport(t *testing.T, context spec.G, it spec.S) {
 	var (
 		Expect = NewWithT(t).Expect
 
-		a = helper.AccessLoggingSupport{}
+		e = helper.EnvironmentPropertySourceSupport{}
 	)
 
-	it("returns if $BPL_TOMEE_ACCESS_LOGGING_ENABLED is not set", func() {
-		Expect(a.Execute()).To(BeNil())
+	it("returns if $BPL_TOMEE_ENVIRONMENT_PROPERTY_SUPPORT_ENABLED is not set", func() {
+		Expect(e.Execute()).To(BeNil())
 	})
 
-	context("$BPL_TOMEE_ACCESS_LOGGING_ENABLED", func() {
+	context("$BPL_TOMEE_ENVIRONMENT_PROPERTY_SUPPORT_ENABLED", func() {
 		it.Before(func() {
-			Expect(os.Setenv("BPL_TOMEE_ACCESS_LOGGING_ENABLED", "")).To(Succeed())
+			Expect(os.Setenv("BPL_TOMEE_ENVIRONMENT_PROPERTY_SUPPORT_ENABLED", "")).To(Succeed())
 		})
 
 		it.After(func() {
-			Expect(os.Unsetenv("BPL_TOMEE_ACCESS_LOGGING_ENABLED")).To(Succeed())
+			Expect(os.Unsetenv("BPL_TOMEE_ENVIRONMENT_PROPERTY_SUPPORT_ENABLED")).To(Succeed())
 		})
 
 		it("contributes configuration", func() {
-			Expect(a.Execute()).To(Equal(map[string]string{"JAVA_TOOL_OPTIONS": "-Daccess.logging.enabled=true"}))
+			Expect(e.Execute()).To(Equal(map[string]string{"JAVA_TOOL_OPTIONS": "-Dorg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.util.digester.EnvironmentPropertySource"}))
 		})
 
 		context("$JAVA_TOOL_OPTIONS", func() {
@@ -60,8 +60,8 @@ func testAccessLoggingSupport(t *testing.T, context spec.G, it spec.S) {
 			})
 
 			it("contributes configuration appended to existing $JAVA_TOOL_OPTIONS", func() {
-				Expect(a.Execute()).To(Equal(map[string]string{
-					"JAVA_TOOL_OPTIONS": "test-java-tool-options -Daccess.logging.enabled=true",
+				Expect(e.Execute()).To(Equal(map[string]string{
+					"JAVA_TOOL_OPTIONS": "test-java-tool-options -Dorg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.util.digester.EnvironmentPropertySource",
 				}))
 			})
 		})

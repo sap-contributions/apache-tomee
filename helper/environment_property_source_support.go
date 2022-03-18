@@ -14,23 +14,31 @@
  * limitations under the License.
  */
 
-package main
+package helper
 
 import (
 	"os"
-
+	"strings"
 	"github.com/paketo-buildpacks/libpak/bard"
-	"github.com/paketo-buildpacks/libpak/sherpa"
-
-	"github.com/garethjevans/apache-tomee/helper"
 )
 
-func main() {
-	sherpa.Execute(func() error {
-		logger := bard.NewLogger(os.Stdout)
-		return sherpa.Helpers(map[string]sherpa.ExecD{
-			"access-logging-support": helper.AccessLoggingSupport{Logger: logger},
-			"environment-property-source-support": helper.EnvironmentPropertySourceSupport{Logger: logger},
-		})
-	})
+type EnvironmentPropertySourceSupport struct {
+	Logger bard.Logger
+}
+
+func (e EnvironmentPropertySourceSupport) Execute() (map[string]string, error) {
+	if _, ok := os.LookupEnv("BPL_TOMEE_ENVIRONMENT_PROPERTY_SUPPORT_ENABLED"); !ok {
+		return nil, nil
+	}
+
+	e.Logger.Info("Tomee Environment Property Support Enabled")
+
+	var values []string
+	if s, ok := os.LookupEnv("JAVA_TOOL_OPTIONS"); ok {
+		values = append(values, s)
+	}
+
+	values = append(values, "-Dorg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.util.digester.EnvironmentPropertySource")
+
+	return map[string]string{"JAVA_TOOL_OPTIONS": strings.Join(values, " ")}, nil
 }

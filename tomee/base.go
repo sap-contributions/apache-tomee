@@ -263,24 +263,6 @@ func (b Base) ContributeConfiguration(layer libcnb.Layer) error {
 		return fmt.Errorf("unable to copy %s to %s\n%w", in.Name(), file, err)
 	}
 
-	b.Logger.Bodyf("Copying catalina.properties to %s/conf", layer.Path)
-	file = filepath.Join(b.BuildpackPath, "resources", "catalina.properties")
-	in, err = os.Open(file)
-	if err != nil {
-		return fmt.Errorf("unable to open %s\n%w", file, err)
-	}
-	defer in.Close()
-
-	file = filepath.Join(layer.Path, "conf", "catalina.properties")
-	if err := sherpa.CopyFile(in, file); err != nil {
-		return fmt.Errorf("unable to copy %s to %s\n%w", in.Name(), file, err)
-	}
-
-	// ensure the file is group writable so a helper can modify it.
-	if err := os.Chmod(file, 0664); err != nil {
-		return fmt.Errorf("unable to make %s to group writeable\n%w", file, err)
-	}
-
 	return nil
 }
 

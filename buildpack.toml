@@ -28,18 +28,13 @@ api = "0.7"
     uri = "https://github.com/garethjevans/apache-tomee/blob/main/LICENSE"
 
 [metadata]
-  include-files = ["LICENSE", "NOTICE", "README.md", "bin/build", "bin/detect", "bin/helper", "bin/main", "buildpack.toml", "resources/catalina.properties", "resources/context.xml", "resources/logging.properties", "resources/server.xml", "resources/web.xml"]
+  include-files = ["LICENSE", "NOTICE", "README.md", "bin/build", "bin/detect", "bin/helper", "bin/main", "buildpack.toml", "resources/context.xml", "resources/logging.properties", "resources/server.xml", "resources/web.xml"]
   pre-package = "scripts/build.sh"
 
   [[metadata.configurations]]
     description = "the Tomee access logging state"
     launch = true
     name = "BPL_TOMEE_ACCESS_LOGGING_ENABLED"
-
-  [[metadata.configurations]]
-    description = "Name of the binding to convert into system properties"
-    launch = true
-    name = "BPL_TOMEE_BINDING_NAME"
 
   [[metadata.configurations]]
     build = true

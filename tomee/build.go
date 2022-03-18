@@ -100,7 +100,7 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 	}
 
 	b.Logger.Info("Adding helper layer...")
-	h, be := libpak.NewHelperLayer(context.Buildpack, "access-logging-support", "dynamic-property-support")
+	h, be := libpak.NewHelperLayer(context.Buildpack, "access-logging-support", "environment-property-source-support")
 	h.Logger = b.Logger
 	result.Layers = append(result.Layers, h)
 	if be.Name != "" {

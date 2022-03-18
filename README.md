@@ -42,8 +42,7 @@ When this buildpack runs on the [Tiny stack](https://paketo.io/docs/concepts/sta
 | `$BP_TOMEE_VERSION` |  Configure a specific Tomee version.  This value must _exactly_ match a version available in the buildpack so typically it would configured to a wildcard such as `9.*`.
 | `$BP_TOMEE_DISTRIBUTION` |  Configure a specific Tomee distribution.  This value must be one of `microprofile`, `webprofile`, `plus` or `plume`. Defaults to `microprofile`.
 | `$BPL_TOMEE_ACCESS_LOGGING_ENABLED` | Whether access logging should be activated.  Defaults to inactive.
-| `$BPL_TOMEE_ENV_*` | Variables to be converted to system properties.
-| `$BPL_TOMEE_BINDING_NAME` | Name of the binding to convert into system properties.
+| `$BPL_TOMEE_ENVIRONMENT_PROPERTY_SUPPORT_ENABLED` | Enable an `org.apache.tomcat.util.digester.EnvironmentPropertySource` with Tomcat, to support loading configuration from environment variables.
 
 ### External Configuration Package
 The artifacts that the repository provides must be in TAR format and must follow the Tomee archive structure:
@@ -57,12 +56,9 @@ The artifacts that the repository provides must be in TAR format and must follow
     ├── ...
 ```
 
-### Dynamic System Properties
-
-Tomee supports property replacement in its [configuration files](https://tomcat.apache.org/tomcat-9.0-doc/config/systemprops.html). These system properties can be configured in two ways:
-
-  1. Use of `BPL_TOMEE_ENV_*` environment variables at launch time.
-  2. Configured from a binding with `BPL_TOMEE_BINDING_NAME`.
+### Environment Property Source
+When the Environment Property Source is configured, configuration for Tomcats [configuration files](https://tomcat.apache.org/tomcat-9.0-doc/config/systemprops.html) can be loaded
+from environment variables. To use this feature, the name of the environment variable must match the name of the property.
 
 ## Bindings
 The buildpack optionally accepts the following bindings:

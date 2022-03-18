@@ -59,8 +59,6 @@ func testBase(t *testing.T, context spec.G, it spec.S) {
 
 	it("contributes catalina base", func() {
 		Expect(os.MkdirAll(filepath.Join(ctx.Buildpack.Path, "resources"), 0755)).To(Succeed())
-		Expect(ioutil.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "catalina.properties"), []byte{}, 0644)).
-			To(Succeed())
 		Expect(ioutil.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "context.xml"), []byte{}, 0644)).
 			To(Succeed())
 		Expect(ioutil.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "logging.properties"), []byte{}, 0644)).
@@ -114,8 +112,6 @@ func testBase(t *testing.T, context spec.G, it spec.S) {
 		Expect(err).NotTo(HaveOccurred())
 
 		Expect(layer.Launch).To(BeTrue())
-		Expect(filepath.Join(layer.Path, "conf", "catalina.properties")).To(BeARegularFile())
-		Expect(filepath.Join(layer.Path, "conf", "catalina.properties")).To(HavePermissions(0664))
 		Expect(filepath.Join(layer.Path, "conf", "context.xml")).To(BeARegularFile())
 		Expect(filepath.Join(layer.Path, "conf", "logging.properties")).To(BeARegularFile())
 		Expect(filepath.Join(layer.Path, "conf", "server.xml")).To(BeARegularFile())
@@ -139,8 +135,6 @@ func testBase(t *testing.T, context spec.G, it spec.S) {
 
 	it("contributes custom configuration", func() {
 		Expect(os.MkdirAll(filepath.Join(ctx.Buildpack.Path, "resources"), 0755)).To(Succeed())
-		Expect(ioutil.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "catalina.properties"), []byte{}, 0644)).
-			To(Succeed())
 		Expect(ioutil.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "context.xml"), []byte{}, 0644)).
 			To(Succeed())
 		Expect(ioutil.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "logging.properties"), []byte{}, 0644)).
@@ -203,8 +197,6 @@ func testBase(t *testing.T, context spec.G, it spec.S) {
 
 		it("contributes custom configuration with directory", func() {
 			Expect(os.MkdirAll(filepath.Join(ctx.Buildpack.Path, "resources"), 0755)).To(Succeed())
-			Expect(ioutil.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "catalina.properties"), []byte{}, 0644)).
-				To(Succeed())
 			Expect(ioutil.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "context.xml"), []byte{}, 0644)).
 				To(Succeed())
 			Expect(ioutil.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "logging.properties"), []byte{}, 0644)).
