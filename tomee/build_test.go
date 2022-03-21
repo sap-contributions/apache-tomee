@@ -129,7 +129,7 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		Expect(result.Layers).To(HaveLen(3))
 		Expect(result.Layers[0].Name()).To(Equal("tomee-microprofile"))
 		Expect(result.Layers[1].Name()).To(Equal("helper"))
-		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"access-logging-support", "environment-property-source-support"}))
+		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"access-logging-support"}))
 		Expect(result.Layers[2].Name()).To(Equal("catalina-base"))
 
 		Expect(result.BOM.Entries).To(HaveLen(2))
@@ -206,7 +206,7 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		Expect(result.Layers).To(HaveLen(3))
 		Expect(result.Layers[0].Name()).To(Equal("tomee-microprofile"))
 		Expect(result.Layers[1].Name()).To(Equal("helper"))
-		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"access-logging-support", "environment-property-source-support"}))
+		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"access-logging-support"}))
 		Expect(result.Layers[2].Name()).To(Equal("catalina-base"))
 
 		Expect(result.BOM.Entries).To(HaveLen(2))

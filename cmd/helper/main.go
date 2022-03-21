@@ -27,10 +27,8 @@ import (
 
 func main() {
 	sherpa.Execute(func() error {
-		logger := bard.NewLogger(os.Stdout)
 		return sherpa.Helpers(map[string]sherpa.ExecD{
-			"access-logging-support": helper.AccessLoggingSupport{Logger: logger},
-			"environment-property-source-support": helper.EnvironmentPropertySourceSupport{Logger: logger},
+			"access-logging-support": helper.AccessLoggingSupport{Logger: bard.NewLogger(os.Stdout)},
 		})
 	})
 }
