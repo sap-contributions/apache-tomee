@@ -44,8 +44,8 @@ api = "0.7"
   [[metadata.configurations]]
     build = true
     default = "false"
-    description = "Disable the EnvironmentPropertySource for reading environment variables into tomcat config files"
-    name = "BP_TOMEE_ENVIRONMENT_PROPERTY_SOURCE_DISABLED"
+    description = "Disable Tomcat's EnvironmentPropertySource"
+    name = "BP_TOMEE_ENV_PROPERTY_SOURCE_DISABLED"
 
   [[metadata.configurations]]
     build = true

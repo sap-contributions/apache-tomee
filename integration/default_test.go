@@ -122,7 +122,6 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 			container, err = docker.Container.Run.
 				WithEnv(map[string]string{
 					"PORT": "8080",
-					"BPL_TOMEE_ENVIRONMENT_PROPERTY_SUPPORT_ENABLED": "true",
 					"BPL_TOMEE_ACCESS_LOGGING_ENABLED": "true",
 				}).
 				WithPublish("8080").

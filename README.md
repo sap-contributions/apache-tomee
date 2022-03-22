@@ -35,7 +35,7 @@ When this buildpack runs on the [Tiny stack](https://paketo.io/docs/concepts/sta
 | -------------------- | -----------
 | `$BP_JAVA_APP_SERVER` | The application server to use. It defaults to the empty string, which allow the first Java application server in the buildpack order group to run. It can be set to `tomee` to force Tomee to be used. See the documentation for other Java application server buildpacks for other acceptable values. |
 | `$BP_TOMEE_CONTEXT_PATH` | The context path to mount the application at.  Defaults to empty (`ROOT`).
-| `$BP_TOMEE_ENVIRONMENT_PROPERTY_SOURCE_DISABLED` | Disable the `org.apache.tomcat.util.digester.EnvironmentPropertySource` config, to support loading configuration from environment variables.
+| `$BP_TOMEE_ENV_PROPERTY_SOURCE_DISABLED` | When true the buildpack will not configure `org.apache.tomcat.util.digester.EnvironmentPropertySource`. This configuration option is added to support loading configuration from environment variables and referencing them in Tomcat configuration files.
 | `$BP_TOMEE_EXT_CONF_SHA256` | The SHA256 hash of the external configuration package
 | `$BP_TOMEE_EXT_CONF_STRIP` | The number of directory levels to strip from the external configuration package.  Defaults to `0`.
 | `$BP_TOMEE_EXT_CONF_URI` | The download URI of the external configuration package
