@@ -44,10 +44,13 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 		Expect(err).NotTo(HaveOccurred())
 
 		ctx.Application.Path = path
+
+		Expect(os.Setenv("BP_JAVA_APP_SERVER", "tomee")).To(Succeed())
 	})
 
 	it.After(func() {
 		Expect(os.RemoveAll(path)).To(Succeed())
+		Expect(os.Unsetenv("BP_JAVA_APP_SERVER")).To(Succeed())
 	})
 
 	it("fails with Main-Class", func() {
@@ -82,7 +85,12 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 
 	context("WEB-INF found", func() {
 		it.Before(func() {
+			Expect(os.Setenv("BP_JAVA_APP_SERVER", "tomee")).To(Succeed())
 			Expect(os.MkdirAll(filepath.Join(path, "WEB-INF"), 0755)).To(Succeed())
+		})
+
+		it.After(func() {
+			Expect(os.Unsetenv("BP_JAVA_APP_SERVER")).To(Succeed())
 		})
 
 		it("requires and provides jvm-application-artifact", func() {
