@@ -63,7 +63,10 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 				err  error
 			)
 
-			image, logs, err = pack.WithNoColor().WithVerbose().Build.
+			image, logs, err = pack.
+				WithNoColor().
+				WithVerbose().
+				Build.
 				WithPullPolicy("if-not-present").
 				WithBuilder("paketobuildpacks/builder:base").
 				WithBuildpacks("paketo-buildpacks/syft",
@@ -96,7 +99,10 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 				err  error
 			)
 
-			image, logs, err = pack.WithNoColor().WithVerbose().Build.
+			image, logs, err = pack.
+				WithNoColor().
+				WithVerbose().
+				Build.
 				WithPullPolicy("if-not-present").
 				WithBuilder("paketobuildpacks/builder:tiny").
 				WithBuildpacks("paketo-buildpacks/syft",
