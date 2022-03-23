@@ -23,7 +23,7 @@ import (
 	. "github.com/onsi/gomega"
 	"github.com/sclevine/spec"
 
-	"github.com/garethjevans/apache-tomee/helper"
+	"github.com/paketo-buildpacks/apache-tomee/helper"
 )
 
 func testAccessLoggingSupport(t *testing.T, context spec.G, it spec.S) {

@@ -164,7 +164,7 @@ jobs:
                     --format "${FORMAT}"
                 fi
               env:
-                PACKAGE: ghcr.io/garethjevans/apache-tomee
+                PACKAGE: ghcr.io/paketo-buildpacks/apache-tomee
                 PUBLISH: "true"
                 VERSION: ${{ steps.version.outputs.version }}
                 VERSION_MAJOR: ${{ steps.version.outputs.version-major }}
@@ -194,7 +194,7 @@ jobs:
             - if: ${{ true }}
               uses: docker://ghcr.io/buildpacks/actions/registry/request-add-entry:4.0.1
               with:
-                address: ghcr.io/garethjevans/apache-tomee@${{ steps.package.outputs.digest }}
-                id: garethjevans/apache-tomee
+                address: ghcr.io/paketo-buildpacks/apache-tomee@${{ steps.package.outputs.digest }}
+                id: paketo-buildpacks/apache-tomee
                 token: ${{ secrets.JAVA_GITHUB_TOKEN }}
                 version: ${{ steps.version.outputs.version }}

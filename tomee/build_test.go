@@ -29,7 +29,7 @@ import (
 	"github.com/paketo-buildpacks/libpak"
 	"github.com/sclevine/spec"
 
-	"github.com/garethjevans/apache-tomee/tomee"
+	"github.com/paketo-buildpacks/apache-tomee/tomee"
 )
 
 func testBuild(t *testing.T, context spec.G, it spec.S) {

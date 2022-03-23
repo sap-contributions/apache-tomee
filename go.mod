@@ -1,4 +1,4 @@
-module github.com/garethjevans/apache-tomee
+module github.com/paketo-buildpacks/apache-tomee
 
 go 1.17
 

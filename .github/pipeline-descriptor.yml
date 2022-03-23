@@ -4,25 +4,23 @@ github:
 
 codeowners:
 - path:  "*"
-  owner: "garethjevans"
-- path:  "*"
-  owner: "samcolson4"
+  owner: "paketo-buildpacks"
 
 package:
-  repository:     ghcr.io/garethjevans/apache-tomee
+  repository:     gcr.io/paketo-buildpacks/apache-tomee
   register:       true
   registry_token: ${{ secrets.JAVA_GITHUB_TOKEN }}
 
 docker_credentials:
-- registry: ghcr.io
-  username: ${{ github.actor }}
-  password: ${{ secrets.JAVA_GITHUB_TOKEN }}
+- registry: gcr.io
+  username: _json_key
+  password: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
 
 dependencies:
 - name:            Tomee 7 Microprofile
   id:              tomee-microprofile
   version_pattern: "7\\.[\\d]+\\.[\\d]+"
-  uses:            docker://garethjevans/tomee-dependency:main
+  uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
     uri: https://downloads.apache.org/tomee
     dist: microprofile
@@ -30,7 +28,7 @@ dependencies:
 - name:            Tomee 8 Microprofile
   id:              tomee-microprofile
   version_pattern: "8\\.[\\d]+\\.[\\d]+"
-  uses:            docker://garethjevans/tomee-dependency:main
+  uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
     uri: https://downloads.apache.org/tomee
     dist: microprofile
@@ -38,7 +36,7 @@ dependencies:
 - name:            Tomee 9 Microprofile
   id:              tomee-microprofile
   version_pattern: "9\\.[\\d]+\\.[\\d]+?[-+]?[a-zA-Z0-9]+"
-  uses:            docker://garethjevans/tomee-dependency:main
+  uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
     uri: https://downloads.apache.org/tomee
     dist: microprofile
@@ -46,7 +44,7 @@ dependencies:
 - name:            Tomee 7 Webprofile
   id:              tomee-webprofile
   version_pattern: "7\\.[\\d]+\\.[\\d]+"
-  uses:            docker://garethjevans/tomee-dependency:main
+  uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
     uri: https://downloads.apache.org/tomee
     dist: webprofile
@@ -54,7 +52,7 @@ dependencies:
 - name:            Tomee 8 Webprofile
   id:              tomee-webprofile
   version_pattern: "8\\.[\\d]+\\.[\\d]+"
-  uses:            docker://garethjevans/tomee-dependency:main
+  uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
     uri: https://downloads.apache.org/tomee
     dist: webprofile
@@ -62,7 +60,7 @@ dependencies:
 - name:            Tomee 9 Webprofile
   id:              tomee-webprofile
   version_pattern: "9\\.[\\d]+\\.[\\d]+?[-+]?[a-zA-Z0-9]+"
-  uses:            docker://garethjevans/tomee-dependency:main
+  uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
     uri: https://downloads.apache.org/tomee
     dist: webprofile
@@ -70,7 +68,7 @@ dependencies:
 - name:            Tomee 7 Plus
   id:              tomee-plus
   version_pattern: "7\\.[\\d]+\\.[\\d]+"
-  uses:            docker://garethjevans/tomee-dependency:main
+  uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
     uri: https://downloads.apache.org/tomee
     dist: plus
@@ -78,7 +76,7 @@ dependencies:
 - name:            Tomee 8 Plus
   id:              tomee-plus
   version_pattern: "8\\.[\\d]+\\.[\\d]+"
-  uses:            docker://garethjevans/tomee-dependency:main
+  uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
     uri: https://downloads.apache.org/tomee
     dist: plus
@@ -86,7 +84,7 @@ dependencies:
 - name:            Tomee 9 Plus
   id:              tomee-plus
   version_pattern: "9\\.[\\d]+\\.[\\d]+?[-+]?[a-zA-Z0-9]+"
-  uses:            docker://garethjevans/tomee-dependency:main
+  uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
     uri: https://downloads.apache.org/tomee
     dist: plus
@@ -94,7 +92,7 @@ dependencies:
 - name:            Tomee 7 Plume
   id:              tomee-plume
   version_pattern: "7\\.[\\d]+\\.[\\d]+"
-  uses:            docker://garethjevans/tomee-dependency:main
+  uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
     uri: https://downloads.apache.org/tomee
     dist: plume
@@ -102,7 +100,7 @@ dependencies:
 - name:            Tomee 8 Plume
   id:              tomee-plume
   version_pattern: "8\\.[\\d]+\\.[\\d]+"
-  uses:            docker://garethjevans/tomee-dependency:main
+  uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
     uri: https://downloads.apache.org/tomee
     dist: plume
@@ -110,7 +108,7 @@ dependencies:
 - name:            Tomee 9 Plume
   id:              tomee-plume
   version_pattern: "9\\.[\\d]+\\.[\\d]+?[-+]?[a-zA-Z0-9]+"
-  uses:            docker://garethjevans/tomee-dependency:main
+  uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
     uri: https://downloads.apache.org/tomee
     dist: plume
