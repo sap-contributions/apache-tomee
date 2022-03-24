@@ -22,7 +22,7 @@ dependencies:
   version_pattern: "7\\.[\\d]+\\.[\\d]+"
   uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
-    uri: https://downloads.apache.org/tomee
+    uri: https://archive.apache.org/dist/tomee
     dist: microprofile
     major: 7
 - name:            Tomee 8 Microprofile
@@ -30,7 +30,7 @@ dependencies:
   version_pattern: "8\\.[\\d]+\\.[\\d]+"
   uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
-    uri: https://downloads.apache.org/tomee
+    uri: https://archive.apache.org/dist/tomee
     dist: microprofile
     major: 8
 - name:            Tomee 9 Microprofile
@@ -38,7 +38,7 @@ dependencies:
   version_pattern: "9\\.[\\d]+\\.[\\d]+?[-+]?[a-zA-Z0-9]+"
   uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
-    uri: https://downloads.apache.org/tomee
+    uri: https://archive.apache.org/dist/tomee
     dist: microprofile
     major: 9
 - name:            Tomee 7 Webprofile
@@ -46,7 +46,7 @@ dependencies:
   version_pattern: "7\\.[\\d]+\\.[\\d]+"
   uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
-    uri: https://downloads.apache.org/tomee
+    uri: https://archive.apache.org/dist/tomee
     dist: webprofile
     major: 7
 - name:            Tomee 8 Webprofile
@@ -54,7 +54,7 @@ dependencies:
   version_pattern: "8\\.[\\d]+\\.[\\d]+"
   uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
-    uri: https://downloads.apache.org/tomee
+    uri: https://archive.apache.org/dist/tomee
     dist: webprofile
     major: 8
 - name:            Tomee 9 Webprofile
@@ -62,7 +62,7 @@ dependencies:
   version_pattern: "9\\.[\\d]+\\.[\\d]+?[-+]?[a-zA-Z0-9]+"
   uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
-    uri: https://downloads.apache.org/tomee
+    uri: https://archive.apache.org/dist/tomee
     dist: webprofile
     major: 9
 - name:            Tomee 7 Plus
@@ -70,7 +70,7 @@ dependencies:
   version_pattern: "7\\.[\\d]+\\.[\\d]+"
   uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
-    uri: https://downloads.apache.org/tomee
+    uri: https://archive.apache.org/dist/tomee
     dist: plus
     major: 7
 - name:            Tomee 8 Plus
@@ -78,7 +78,7 @@ dependencies:
   version_pattern: "8\\.[\\d]+\\.[\\d]+"
   uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
-    uri: https://downloads.apache.org/tomee
+    uri: https://archive.apache.org/dist/tomee
     dist: plus
     major: 8
 - name:            Tomee 9 Plus
@@ -86,7 +86,7 @@ dependencies:
   version_pattern: "9\\.[\\d]+\\.[\\d]+?[-+]?[a-zA-Z0-9]+"
   uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
-    uri: https://downloads.apache.org/tomee
+    uri: https://archive.apache.org/dist/tomee
     dist: plus
     major: 9
 - name:            Tomee 7 Plume
@@ -94,7 +94,7 @@ dependencies:
   version_pattern: "7\\.[\\d]+\\.[\\d]+"
   uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
-    uri: https://downloads.apache.org/tomee
+    uri: https://archive.apache.org/dist/tomee
     dist: plume
     major: 7
 - name:            Tomee 8 Plume
@@ -102,7 +102,7 @@ dependencies:
   version_pattern: "8\\.[\\d]+\\.[\\d]+"
   uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
-    uri: https://downloads.apache.org/tomee
+    uri: https://archive.apache.org/dist/tomee
     dist: plume
     major: 8
 - name:            Tomee 9 Plume
@@ -110,7 +110,7 @@ dependencies:
   version_pattern: "9\\.[\\d]+\\.[\\d]+?[-+]?[a-zA-Z0-9]+"
   uses:            docker://paketo-buildpacks/tomee-dependency:main
   with:
-    uri: https://downloads.apache.org/tomee
+    uri: https://archive.apache.org/dist/tomee
     dist: plume
     major: 9
 

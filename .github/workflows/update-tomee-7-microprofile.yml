@@ -46,7 +46,7 @@ jobs:
               with:
                 dist: microprofile
                 major: 7
-                uri: https://downloads.apache.org/tomee
+                uri: https://archive.apache.org/dist/tomee
             - name: Update Buildpack Dependency
               id: buildpack
               run: |-
