@@ -297,10 +297,4 @@ api = "0.7"
       uri = "https://github.com/cloudfoundry/java-buildpack-support/blob/main/LICENSE"
 
 [[stacks]]
-  id = "io.buildpacks.stacks.bionic"
-
-[[stacks]]
-  id = "io.paketo.stacks.tiny"
-
-[[stacks]]
   id = "*"
