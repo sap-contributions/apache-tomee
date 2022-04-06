@@ -1,0 +1,7 @@
+id = "tomee-microprofile"
+uri = "https://localhost/stub-tomee.tar.gz"
+sha256 = "26a0f0d1782027e7849389cb975a40cd8e69497d19946442881d61bd5f1756bf"
+purl = "pkg:generic/tomee@1.1.1"
+cpes = [
+    "cpe:2.3:a:apache:tomee:1.1.1:*:*:*:*:*:*:*"
+]

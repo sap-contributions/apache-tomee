@@ -1,0 +1,8 @@
+.idea
+build
+bin
+target
+*.cnb
+dependencies
+.envrc
+.tool-versions
