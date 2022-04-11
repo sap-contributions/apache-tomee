@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/BurntSushi/toml v1.1.0
-	github.com/buildpacks/libcnb v1.25.5
+	github.com/buildpacks/libcnb v1.26.0
 	github.com/heroku/color v0.0.6
 	github.com/onsi/gomega v1.19.0
 	github.com/paketo-buildpacks/libjvm v1.36.1
@@ -30,7 +30,7 @@ require (
 	github.com/pavel-v-chernykh/keystore-go/v4 v4.3.0 // indirect
 	github.com/pelletier/go-toml v1.9.4 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/stretchr/objx v0.2.0 // indirect
+	github.com/stretchr/objx v0.3.0 // indirect
 	github.com/stretchr/testify v1.7.1 // indirect
 	github.com/ulikunitz/xz v0.5.10 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
