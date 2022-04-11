@@ -163,7 +163,7 @@ api = "0.7"
     purl = "pkg:generic/apache-tomee@8.0.10"
     sha256 = "8886682389b5b4c53b127e3876ce5837b4a3a40cd7243751ae126fcf42d0b951"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://downloads.apache.org/tomee/tomee-8.0.10/apache-tomee-8.0.10-webprofile.tar.gz"
+    uri = "https://archive.apache.org/dist/tomee/tomee-8.0.10/apache-tomee-8.0.10-webprofile.tar.gz"
     version = "8.0.10"
 
     [[metadata.dependencies.licenses]]
