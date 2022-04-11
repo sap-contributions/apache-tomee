@@ -121,7 +121,7 @@ api = "0.7"
     purl = "pkg:generic/apache-tomee@7.1.4"
     sha256 = "df17dd309dddcfa088e6d8f5d7885622d152e970a3978cb8a0c6514ca31158d9"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://downloads.apache.org/tomee/tomee-7.1.4/apache-tomee-7.1.4-plus.tar.gz"
+    uri = "https://archive.apache.org/dist/tomee/tomee-7.1.4/apache-tomee-7.1.4-plus.tar.gz"
     version = "7.1.4"
 
     [[metadata.dependencies.licenses]]
