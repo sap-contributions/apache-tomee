@@ -233,7 +233,7 @@ api = "0.7"
     purl = "pkg:generic/apache-tomee@9.0.0-M7"
     sha256 = "63461a315ca3af8322f41893d0dc44598b627fe8e00608e90bc296ec6653261b"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://downloads.apache.org/tomee/tomee-9.0.0-M7/apache-tomee-9.0.0-M7-plus.tar.gz"
+    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M7/apache-tomee-9.0.0-M7-plus.tar.gz"
     version = "9.0.0-M7"
 
     [[metadata.dependencies.licenses]]
