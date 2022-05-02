@@ -8,7 +8,7 @@ require (
 	github.com/heroku/color v0.0.6
 	github.com/onsi/gomega v1.19.0
 	github.com/paketo-buildpacks/libjvm v1.36.1
-	github.com/paketo-buildpacks/libpak v1.59.0
+	github.com/paketo-buildpacks/libpak v1.60.0
 	github.com/paketo-buildpacks/occam v0.8.0
 	github.com/sclevine/spec v1.4.0
 )
@@ -16,7 +16,7 @@ require (
 require (
 	github.com/ForestEckhardt/freezer v0.0.11 // indirect
 	github.com/Masterminds/semver/v3 v3.1.1 // indirect
-	github.com/creack/pty v1.1.17 // indirect
+	github.com/creack/pty v1.1.18 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.0 // indirect
 	github.com/h2non/filetype v1.1.3 // indirect
@@ -28,7 +28,7 @@ require (
 	github.com/oklog/ulid v1.3.1 // indirect
 	github.com/paketo-buildpacks/packit/v2 v2.2.0 // indirect
 	github.com/pavel-v-chernykh/keystore-go/v4 v4.3.0 // indirect
-	github.com/pelletier/go-toml v1.9.4 // indirect
+	github.com/pelletier/go-toml v1.9.5 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.3.0 // indirect
 	github.com/stretchr/testify v1.7.1 // indirect
