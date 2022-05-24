@@ -2,11 +2,12 @@ package integration_test
 
 import (
 	"fmt"
-	"github.com/paketo-buildpacks/occam/packagers"
 	"os"
 	"path/filepath"
 	"testing"
 	"time"
+
+	"github.com/paketo-buildpacks/occam/packagers"
 
 	"github.com/BurntSushi/toml"
 	"github.com/onsi/gomega/format"
@@ -18,10 +19,8 @@ import (
 )
 
 var (
-	buildpack          string
-	//buildPlanBuildpack string
-	offlineBuildpack   string
-	root               string
+	buildpack string
+	root      string
 
 	buildpackInfo struct {
 		Buildpack struct {
