@@ -68,18 +68,19 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 				WithVerbose().
 				Build.
 				WithPullPolicy("if-not-present").
-				WithBuilder("paketobuildpacks/builder:base").
-				WithBuildpacks("paketo-buildpacks/syft",
-					"paketo-buildpacks/ca-certificates@3.0.2",
-					"paketo-buildpacks/bellsoft-liberica",
-					"paketo-buildpacks/maven",
+				WithBuilder("paketobuildpacks/builder:buildpackless-base").
+				WithBuildpacks("gcr.io/paketo-buildpacks/ca-certificates",
+					"gcr.io/paketo-buildpacks/bellsoft-liberica",
+					"gcr.io/paketo-buildpacks/syft",
+					"gcr.io/paketo-buildpacks/maven",
 					buildpack).
 				WithEnv(map[string]string{
-					"BP_JAVA_APP_SERVER": "tomee",
-					"BP_MAVEN_BUILT_ARTIFACT": "test-jaxrs-tomee/target/*.war",
-					"BP_MAVEN_BUILT_MODULE": "test-jaxrs-tomee",
+					"BP_JAVA_APP_SERVER":       "tomee",
+					"BP_MAVEN_BUILT_ARTIFACT":  "test-jaxrs-tomee/target/*.war",
+					"BP_MAVEN_BUILT_MODULE":    "test-jaxrs-tomee",
 					"BP_MAVEN_BUILD_ARGUMENTS": "-Dmaven.test.skip=true package --no-transfer-progress",
 				}).
+				WithTrustBuilder().
 				Execute(name, source)
 			Expect(err).ToNot(HaveOccurred(), logs.String)
 
@@ -104,24 +105,25 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 				WithVerbose().
 				Build.
 				WithPullPolicy("if-not-present").
-				WithBuilder("paketobuildpacks/builder:tiny").
-				WithBuildpacks("paketo-buildpacks/syft",
-					"paketo-buildpacks/ca-certificates@3.0.2",
-					"paketo-buildpacks/bellsoft-liberica",
-					"paketo-buildpacks/maven",
+				WithBuilder("paketobuildpacks/builder:buildpackless-tiny").
+				WithBuildpacks("gcr.io/paketo-buildpacks/ca-certificates",
+					"gcr.io/paketo-buildpacks/bellsoft-liberica",
+					"gcr.io/paketo-buildpacks/syft",
+					"gcr.io/paketo-buildpacks/maven",
 					buildpack).
 				WithEnv(map[string]string{
-					"BP_JAVA_APP_SERVER": "tomee",
-					"BP_MAVEN_BUILT_ARTIFACT": "test-jaxrs-tomee/target/*.war",
-					"BP_MAVEN_BUILT_MODULE": "test-jaxrs-tomee",
+					"BP_JAVA_APP_SERVER":       "tomee",
+					"BP_MAVEN_BUILT_ARTIFACT":  "test-jaxrs-tomee/target/*.war",
+					"BP_MAVEN_BUILT_MODULE":    "test-jaxrs-tomee",
 					"BP_MAVEN_BUILD_ARGUMENTS": "-Dmaven.test.skip=true package --no-transfer-progress",
 				}).
+				WithTrustBuilder().
 				Execute(name, source)
 			Expect(err).ToNot(HaveOccurred(), logs.String)
 
 			container, err = docker.Container.Run.
 				WithEnv(map[string]string{
-					"PORT": "8080",
+					"PORT":                             "8080",
 					"BPL_TOMEE_ACCESS_LOGGING_ENABLED": "true",
 				}).
 				WithPublish("8080").
