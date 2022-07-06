@@ -199,28 +199,28 @@ api = "0.7"
       uri = "https://www.apache.org/licenses/"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee-microprofile:9.0.0-M7:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee-microprofile:9.0.0-M8:*:*:*:*:*:*:*"]
     id = "tomee-microprofile"
     name = "Apache Tomee - Microprofile"
-    purl = "pkg:generic/apache-tomee@9.0.0-M7"
-    sha256 = "6058f6318f57f82a96700c701706d4f296d04b5b867a71cb6a01bb8686f83200"
+    purl = "pkg:generic/apache-tomee@9.0.0-M8"
+    sha256 = "e3e0a751faac3ea571e6dcf192ed57622cff62a52ce69ef7850c5eac95fce607"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M7/apache-tomee-9.0.0-M7-microprofile.tar.gz"
-    version = "9.0.0-M7"
+    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M8/apache-tomee-9.0.0-M8-microprofile.tar.gz"
+    version = "9.0.0-M8"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
       uri = "https://www.apache.org/licenses/"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee-webprofile:9.0.0-M7:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee-webprofile:9.0.0-M8:*:*:*:*:*:*:*"]
     id = "tomee-webprofile"
     name = "Apache Tomee - Webprofile"
-    purl = "pkg:generic/apache-tomee@9.0.0-M7"
-    sha256 = "a083775996a56fbb3830f549b18b6c9b9ed42e82aac9af2e1abc719e13782b0f"
+    purl = "pkg:generic/apache-tomee@9.0.0-M8"
+    sha256 = "2ba0c32f254079d9febfddf167675e33d1533de9e411cf9509603f874d01bd2e"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M7/apache-tomee-9.0.0-M7-webprofile.tar.gz"
-    version = "9.0.0-M7"
+    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M8/apache-tomee-9.0.0-M8-webprofile.tar.gz"
+    version = "9.0.0-M8"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
@@ -241,14 +241,14 @@ api = "0.7"
       uri = "https://www.apache.org/licenses/"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee-plume:9.0.0-M7:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee-plume:9.0.0-M8:*:*:*:*:*:*:*"]
     id = "tomee-plume"
     name = "Apache Tomee - Plume"
-    purl = "pkg:generic/apache-tomee@9.0.0-M7"
-    sha256 = "fa13338cddea7c4c0061fbb03f87c6deba93187d4da176eb68e812657d279a68"
+    purl = "pkg:generic/apache-tomee@9.0.0-M8"
+    sha256 = "ef49b3fcc7b72886b176f8dd8910608cf82c285a11290b95826a594da14601bb"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M7/apache-tomee-9.0.0-M7-plume.tar.gz"
-    version = "9.0.0-M7"
+    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M8/apache-tomee-9.0.0-M8-plume.tar.gz"
+    version = "9.0.0-M8"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
