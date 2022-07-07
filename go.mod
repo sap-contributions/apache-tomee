@@ -7,7 +7,7 @@ require (
 	github.com/buildpacks/libcnb v1.26.0
 	github.com/heroku/color v0.0.6
 	github.com/onsi/gomega v1.19.0
-	github.com/paketo-buildpacks/libjvm v1.37.0
+	github.com/paketo-buildpacks/libjvm v1.38.0
 	github.com/paketo-buildpacks/libpak v1.60.1
 	github.com/paketo-buildpacks/occam v0.9.0
 	github.com/sclevine/spec v1.4.0
@@ -38,6 +38,7 @@ require (
 	github.com/magiconair/properties v1.8.6 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
+	github.com/mattn/go-shellwords v1.0.12 // indirect
 	github.com/mitchellh/hashstructure/v2 v2.0.2 // indirect
 	github.com/moby/sys/mount v0.3.2 // indirect
 	github.com/moby/sys/mountinfo v0.6.1 // indirect
@@ -54,7 +55,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/stretchr/objx v0.4.0 // indirect
-	github.com/stretchr/testify v1.7.1 // indirect
+	github.com/stretchr/testify v1.8.0 // indirect
 	github.com/testcontainers/testcontainers-go v0.13.0 // indirect
 	github.com/ulikunitz/xz v0.5.10 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
@@ -66,5 +67,5 @@ require (
 	google.golang.org/grpc v1.46.2 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
