@@ -92,7 +92,7 @@ api = "0.7"
     name = "Apache Tomee - Microprofile"
     purl = "pkg:generic/apache-tomee@7.1.4"
     sha256 = "af8d2e3596a3df4c47db2e9386db1212bc17f688e547e3941d6c958821e859b0"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://archive.apache.org/dist/tomee/tomee-7.1.4/apache-tomee-7.1.4-microprofile.tar.gz"
     version = "7.1.4"
 
@@ -106,7 +106,7 @@ api = "0.7"
     name = "Apache Tomee - Webprofile"
     purl = "pkg:generic/apache-tomee@7.1.4"
     sha256 = "ee4fd96e0b308b40325c32376e4179d1620791fc76e38943d7337b409f445d3e"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://archive.apache.org/dist/tomee/tomee-7.1.4/apache-tomee-7.1.4-webprofile.tar.gz"
     version = "7.1.4"
 
@@ -120,7 +120,7 @@ api = "0.7"
     name = "Apache Tomee - Plus"
     purl = "pkg:generic/apache-tomee@7.1.4"
     sha256 = "df17dd309dddcfa088e6d8f5d7885622d152e970a3978cb8a0c6514ca31158d9"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://archive.apache.org/dist/tomee/tomee-7.1.4/apache-tomee-7.1.4-plus.tar.gz"
     version = "7.1.4"
 
@@ -134,7 +134,7 @@ api = "0.7"
     name = "Apache Tomee - Plume"
     purl = "pkg:generic/apache-tomee@7.1.4"
     sha256 = "089a6e7b15e5a76a52c4d8f910964bd7d34a24e1ec8b83ca03839f32af6ac360"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://archive.apache.org/dist/tomee/tomee-7.1.4/apache-tomee-7.1.4-plume.tar.gz"
     version = "7.1.4"
 
@@ -148,7 +148,7 @@ api = "0.7"
     name = "Apache Tomee - Microprofile"
     purl = "pkg:generic/apache-tomee@8.0.12"
     sha256 = "0372547a1bf3c28c7ce6179bd897c5181b39f3a087d6bcc726a86a495acdfb23"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://archive.apache.org/dist/tomee/tomee-8.0.12/apache-tomee-8.0.12-microprofile.tar.gz"
     version = "8.0.12"
 
@@ -162,7 +162,7 @@ api = "0.7"
     name = "Apache Tomee - Webprofile"
     purl = "pkg:generic/apache-tomee@8.0.12"
     sha256 = "56f12a31a7f75c4683b299666b7a0347b57fa1e224f1d007c875618f727307c6"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://archive.apache.org/dist/tomee/tomee-8.0.12/apache-tomee-8.0.12-webprofile.tar.gz"
     version = "8.0.12"
 
@@ -176,7 +176,7 @@ api = "0.7"
     name = "Apache Tomee - Plus"
     purl = "pkg:generic/apache-tomee@8.0.12"
     sha256 = "a496ac0816e30e118927544aa4bd9255b562817bd4b04dda58cd21ca3b0d4bc4"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://archive.apache.org/dist/tomee/tomee-8.0.12/apache-tomee-8.0.12-plus.tar.gz"
     version = "8.0.12"
 
@@ -190,7 +190,7 @@ api = "0.7"
     name = "Apache Tomee - Plume"
     purl = "pkg:generic/apache-tomee@8.0.12"
     sha256 = "3e3c9937b1e26ced4db5eb356e683131e3f4c0cc01ddc2ef3b460d30e2208e53"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://archive.apache.org/dist/tomee/tomee-8.0.12/apache-tomee-8.0.12-plume.tar.gz"
     version = "8.0.12"
 
@@ -204,7 +204,7 @@ api = "0.7"
     name = "Apache Tomee - Microprofile"
     purl = "pkg:generic/apache-tomee@9.0.0-M8"
     sha256 = "e3e0a751faac3ea571e6dcf192ed57622cff62a52ce69ef7850c5eac95fce607"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M8/apache-tomee-9.0.0-M8-microprofile.tar.gz"
     version = "9.0.0-M8"
 
@@ -218,7 +218,7 @@ api = "0.7"
     name = "Apache Tomee - Webprofile"
     purl = "pkg:generic/apache-tomee@9.0.0-M8"
     sha256 = "2ba0c32f254079d9febfddf167675e33d1533de9e411cf9509603f874d01bd2e"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M8/apache-tomee-9.0.0-M8-webprofile.tar.gz"
     version = "9.0.0-M8"
 
@@ -232,7 +232,7 @@ api = "0.7"
     name = "Apache Tomee - Plus"
     purl = "pkg:generic/apache-tomee@9.0.0-M8"
     sha256 = "dc723b2c55855fd47f0a889f6369fe39d62a7b2e8eb0abaf4918aed3e97bf7fb"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M8/apache-tomee-9.0.0-M8-plus.tar.gz"
     version = "9.0.0-M8"
 
@@ -246,7 +246,7 @@ api = "0.7"
     name = "Apache Tomee - Plume"
     purl = "pkg:generic/apache-tomee@9.0.0-M8"
     sha256 = "ef49b3fcc7b72886b176f8dd8910608cf82c285a11290b95826a594da14601bb"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M8/apache-tomee-9.0.0-M8-plume.tar.gz"
     version = "9.0.0-M8"
 
@@ -260,7 +260,7 @@ api = "0.7"
     name = "Apache Tomcat Access Logging Support"
     purl = "pkg:generic/tomcat-access-logging-support@3.3.0"
     sha256 = "49f9acac1bed65c683276d662c985ed63c685a603e7f5b72f732673bb826a0d4"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://repo.spring.io/release/org/cloudfoundry/tomcat-access-logging-support/3.3.0.RELEASE/tomcat-access-logging-support-3.3.0.RELEASE.jar"
     version = "3.3.0"
 
@@ -274,7 +274,7 @@ api = "0.7"
     name = "Apache Tomcat Lifecycle Support"
     purl = "pkg:generic/tomcat-lifecycle-support@3.3.0"
     sha256 = "b725f4cae0be4a999a08ed978b29081edfd68a187a926ed740cc1f8e9aca70ce"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://repo.spring.io/release/org/cloudfoundry/tomcat-lifecycle-support/3.3.0.RELEASE/tomcat-lifecycle-support-3.3.0.RELEASE.jar"
     version = "3.3.0"
 
@@ -288,19 +288,13 @@ api = "0.7"
     name = "Apache Tomcat Logging Support"
     purl = "pkg:generic/tomcat-logging-support@3.3.0"
     sha256 = "46db58c1d8ef2555d7053a12d669daefb676e9a17a2a1771cd60c95bcb210b0d"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://repo.spring.io/release/org/cloudfoundry/tomcat-logging-support/3.3.0.RELEASE/tomcat-logging-support-3.3.0.RELEASE.jar"
     version = "3.3.0"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
       uri = "https://github.com/cloudfoundry/java-buildpack-support/blob/main/LICENSE"
-
-[[stacks]]
-  id = "io.buildpacks.stacks.bionic"
-
-[[stacks]]
-  id = "io.paketo.stacks.tiny"
 
 [[stacks]]
   id = "*"
