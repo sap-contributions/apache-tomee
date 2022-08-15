@@ -17,7 +17,6 @@
 package tomee_test
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"testing"
@@ -40,7 +39,7 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 
 	it.Before(func() {
 		var err error
-		path, err = ioutil.TempDir("", "tomee")
+		path, err = os.MkdirTemp("", "tomee")
 		Expect(err).NotTo(HaveOccurred())
 
 		ctx.Application.Path = path
@@ -55,7 +54,7 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 
 	it("fails with Main-Class", func() {
 		Expect(os.MkdirAll(filepath.Join(path, "META-INF"), 0755)).To(Succeed())
-		Expect(ioutil.WriteFile(filepath.Join(path, "META-INF", "MANIFEST.MF"), []byte(`Main-Class: test-main-class`), 0644)).To(Succeed())
+		Expect(os.WriteFile(filepath.Join(path, "META-INF", "MANIFEST.MF"), []byte(`Main-Class: test-main-class`), 0644)).To(Succeed())
 
 		Expect(detect.Detect(ctx)).To(Equal(libcnb.DetectResult{Pass: false}))
 	})
