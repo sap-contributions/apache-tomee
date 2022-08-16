@@ -288,7 +288,7 @@ func (b Base) ContributeExternalConfiguration(layer libcnb.Layer) error {
 		}
 	}
 
-	if err := crush.ExtractTarGz(artifact, layer.Path, c); err != nil {
+	if err := crush.Extract(artifact, layer.Path, c); err != nil {
 		return fmt.Errorf("unable to expand external configuration\n%w", err)
 	}
 
