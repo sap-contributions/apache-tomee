@@ -18,7 +18,6 @@ package tomee
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -289,7 +288,7 @@ func (b Base) ContributeExternalConfiguration(layer libcnb.Layer) error {
 		}
 	}
 
-	if err := crush.ExtractTarGz(artifact, layer.Path, c); err != nil {
+	if err := crush.Extract(artifact, layer.Path, c); err != nil {
 		return fmt.Errorf("unable to expand external configuration\n%w", err)
 	}
 
@@ -336,7 +335,7 @@ func (b Base) ContributeLogging(layer libcnb.Layer) error {
 	s := fmt.Sprintf(`CLASSPATH="%s"`, file)
 
 	file = filepath.Join(layer.Path, "bin", "setenv.sh")
-	if err = ioutil.WriteFile(file, []byte(s), 0755); err != nil {
+	if err = os.WriteFile(file, []byte(s), 0755); err != nil {
 		return fmt.Errorf("unable to write file %s\n%w", file, err)
 	}
 

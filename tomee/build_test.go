@@ -17,7 +17,6 @@
 package tomee_test
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"testing"
@@ -41,7 +40,7 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 
 	it.Before(func() {
 		var err error
-		ctx.Application.Path, err = ioutil.TempDir("", "tomee-application")
+		ctx.Application.Path, err = os.MkdirTemp("", "tomee-application")
 		Expect(err).NotTo(HaveOccurred())
 		ctx.Plan = libcnb.BuildpackPlan{Entries: []libcnb.BuildpackPlanEntry{
 			{Name: "jvm-application"},
@@ -71,7 +70,7 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 	it("does not contribute Tomee if Main-Class", func() {
 		Expect(os.MkdirAll(filepath.Join(ctx.Application.Path, "WEB-INF"), 0755)).To(Succeed())
 		Expect(os.MkdirAll(filepath.Join(ctx.Application.Path, "META-INF"), 0755)).To(Succeed())
-		Expect(ioutil.WriteFile(filepath.Join(ctx.Application.Path, "META-INF", "MANIFEST.MF"), []byte(`Main-Class: test-main-class`), 0644)).To(Succeed())
+		Expect(os.WriteFile(filepath.Join(ctx.Application.Path, "META-INF", "MANIFEST.MF"), []byte(`Main-Class: test-main-class`), 0644)).To(Succeed())
 
 		result, err := tomee.Build{SBOMScanner: &sbomScanner}.Build(ctx)
 		Expect(err).NotTo(HaveOccurred())
