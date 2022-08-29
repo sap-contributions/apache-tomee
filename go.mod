@@ -6,7 +6,7 @@ require (
 	github.com/BurntSushi/toml v1.2.0
 	github.com/buildpacks/libcnb v1.26.0
 	github.com/heroku/color v0.0.6
-	github.com/onsi/gomega v1.20.0
+	github.com/onsi/gomega v1.20.1
 	github.com/paketo-buildpacks/libjvm v1.40.0
 	github.com/paketo-buildpacks/libpak v1.61.0
 	github.com/paketo-buildpacks/occam v0.12.1
@@ -48,8 +48,8 @@ require (
 	github.com/oklog/ulid v1.3.1 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.0.3-0.20220114050600-8b9d41f48198 // indirect
-	github.com/opencontainers/runc v1.1.3 // indirect
-	github.com/paketo-buildpacks/packit/v2 v2.4.1 // indirect
+	github.com/opencontainers/runc v1.1.4 // indirect
+	github.com/paketo-buildpacks/packit/v2 v2.4.2 // indirect
 	github.com/pavlo-v-chernykh/keystore-go/v4 v4.4.0 // indirect
 	github.com/pelletier/go-toml v1.9.5 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
@@ -61,11 +61,11 @@ require (
 	github.com/ulikunitz/xz v0.5.10 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
 	go.opencensus.io v0.23.0 // indirect
-	golang.org/x/net v0.0.0-20220812174116-3211cb980234 // indirect
-	golang.org/x/sys v0.0.0-20220818161305-2296e01440c6 // indirect
+	golang.org/x/net v0.0.0-20220826154423-83b083e8dc8b // indirect
+	golang.org/x/sys v0.0.0-20220825204002-c680a09ffe64 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20220819174105-e9f053255caa // indirect
-	google.golang.org/grpc v1.48.0 // indirect
+	google.golang.org/genproto v0.0.0-20220822174746-9e6da59bd2fc // indirect
+	google.golang.org/grpc v1.49.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
