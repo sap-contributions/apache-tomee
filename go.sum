@@ -1867,8 +1867,8 @@ github.com/otiai10/mint v1.3.1/go.mod h1:/yxELlJQ0ufhjUwhshSj+wFjZ78CnZ48/1wtmBH
 github.com/pact-foundation/pact-go v1.0.4/go.mod h1:uExwJY4kCzNPcHRj+hCR/HBbOOIwwtUjcrb0b5/5kLM=
 github.com/paketo-buildpacks/libjvm v1.40.0 h1:LP/Phi8oI9pLV4aT81cSejwXggqvyLJN2YxV4lbfagg=
 github.com/paketo-buildpacks/libjvm v1.40.0/go.mod h1:K8K0BsOUGBFwF4jQiKzXH9dMnftkT1wO/BV67mBoUkE=
-github.com/paketo-buildpacks/libpak v1.61.0 h1:xurhLpV54MWuIeIi9LEk+TFCXak3GUshyp9dZ4e3E5M=
-github.com/paketo-buildpacks/libpak v1.61.0/go.mod h1:CM+/9n+aI40OjoESjqVJp5QOYbqiuNceov1o/A4Q0j0=
+github.com/paketo-buildpacks/libpak v1.62.0 h1:fmRrKhRcUu5lpl0OwlSxEFsGbR57hWVQYAe1toKQImg=
+github.com/paketo-buildpacks/libpak v1.62.0/go.mod h1:nO5uvokr4wu0gT3M74KDsl/Q2DUKeSaIAHYM9HpGZD0=
 github.com/paketo-buildpacks/occam v0.13.0 h1:3pzHhz6ABt24IIa5QnnzGdwm26r3pXavN0IvApsxh2E=
 github.com/paketo-buildpacks/occam v0.13.0/go.mod h1:LqFVlD4oYyy5U6UKWq/ZZIyvqlTvqfLPglVriokCjvo=
 github.com/paketo-buildpacks/packit/v2 v2.1.0/go.mod h1:Ud1X7f9O6e4eGPZlY3pj0jnSa9oDK2L/ghvjmarTLSA=
