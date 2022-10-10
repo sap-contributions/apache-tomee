@@ -9,13 +9,13 @@ require (
 	github.com/onsi/gomega v1.21.1
 	github.com/paketo-buildpacks/libjvm v1.40.0
 	github.com/paketo-buildpacks/libpak v1.63.0
-	github.com/paketo-buildpacks/occam v0.13.2
+	github.com/paketo-buildpacks/occam v0.13.3
 	github.com/sclevine/spec v1.4.0
 )
 
 require (
 	github.com/Azure/go-ansiterm v0.0.0-20210617225240-d185dfc1b5a1 // indirect
-	github.com/ForestEckhardt/freezer v0.0.11 // indirect
+	github.com/ForestEckhardt/freezer v0.0.12 // indirect
 	github.com/Masterminds/semver/v3 v3.1.1 // indirect
 	github.com/Microsoft/go-winio v0.6.0 // indirect
 	github.com/Microsoft/hcsshim v0.9.4 // indirect
@@ -49,7 +49,7 @@ require (
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.1.0-rc1 // indirect
 	github.com/opencontainers/runc v1.1.4 // indirect
-	github.com/paketo-buildpacks/packit/v2 v2.6.0 // indirect
+	github.com/paketo-buildpacks/packit/v2 v2.6.1 // indirect
 	github.com/pavlo-v-chernykh/keystore-go/v4 v4.4.0 // indirect
 	github.com/pelletier/go-toml v1.9.5 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
