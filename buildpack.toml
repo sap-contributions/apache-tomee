@@ -171,14 +171,14 @@ api = "0.7"
       uri = "https://www.apache.org/licenses/"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee-plus:8.0.12:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee-plus:8.0.13:*:*:*:*:*:*:*"]
     id = "tomee-plus"
     name = "Apache Tomee - Plus"
-    purl = "pkg:generic/apache-tomee@8.0.12"
-    sha256 = "a496ac0816e30e118927544aa4bd9255b562817bd4b04dda58cd21ca3b0d4bc4"
+    purl = "pkg:generic/apache-tomee@8.0.13"
+    sha256 = "c67d347696a217c1507aa2c8b2ae804e5033765428ff1d4390629e13f3b310e4"
     stacks = ["*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-8.0.12/apache-tomee-8.0.12-plus.tar.gz"
-    version = "8.0.12"
+    uri = "https://archive.apache.org/dist/tomee/tomee-8.0.13/apache-tomee-8.0.13-plus.tar.gz"
+    version = "8.0.13"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
