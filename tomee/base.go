@@ -179,6 +179,7 @@ func (b Base) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {
 		}
 
 		layer.LaunchEnvironment.Default("CATALINA_BASE", layer.Path)
+		layer.LaunchEnvironment.Default("CATALINA_TMPDIR", "/tmp")
 
 		if err := b.writeDependencySBOM(layer, syftArtifacts); err != nil {
 			return libcnb.Layer{}, err
@@ -263,6 +264,32 @@ func (b Base) ContributeConfiguration(layer libcnb.Layer) error {
 	defer in.Close()
 
 	file = filepath.Join(layer.Path, "conf", "web.xml")
+	if err := sherpa.CopyFile(in, file); err != nil {
+		return fmt.Errorf("unable to copy %s to %s\n%w", in.Name(), file, err)
+	}
+
+	b.Logger.Bodyf("Copying tomee.xml to %s/conf", layer.Path)
+	file = filepath.Join(b.BuildpackPath, "resources", "tomee.xml")
+	in, err = os.Open(file)
+	if err != nil {
+		return fmt.Errorf("unable to open %s\n%w", file, err)
+	}
+	defer in.Close()
+
+	file = filepath.Join(layer.Path, "conf", "tomee.xml")
+	if err := sherpa.CopyFile(in, file); err != nil {
+		return fmt.Errorf("unable to copy %s to %s\n%w", in.Name(), file, err)
+	}
+
+	b.Logger.Bodyf("Copying openejb.xml to %s/conf", layer.Path)
+	file = filepath.Join(b.BuildpackPath, "resources", "openejb.xml")
+	in, err = os.Open(file)
+	if err != nil {
+		return fmt.Errorf("unable to open %s\n%w", file, err)
+	}
+	defer in.Close()
+
+	file = filepath.Join(layer.Path, "conf", "openejb.xml")
 	if err := sherpa.CopyFile(in, file); err != nil {
 		return fmt.Errorf("unable to copy %s to %s\n%w", in.Name(), file, err)
 	}

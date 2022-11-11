@@ -65,6 +65,10 @@ func testBase(t *testing.T, context spec.G, it spec.S) {
 			To(Succeed())
 		Expect(os.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "web.xml"), []byte{}, 0644)).
 			To(Succeed())
+		Expect(os.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "tomee.xml"), []byte{}, 0644)).
+			To(Succeed())
+		Expect(os.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "openejb.xml"), []byte{}, 0644)).
+			To(Succeed())
 
 		accessLoggingDep := libpak.BuildpackDependency{
 			ID:     "tomcat-access-logging-support",
@@ -114,6 +118,8 @@ func testBase(t *testing.T, context spec.G, it spec.S) {
 		Expect(filepath.Join(layer.Path, "conf", "logging.properties")).To(BeARegularFile())
 		Expect(filepath.Join(layer.Path, "conf", "server.xml")).To(BeARegularFile())
 		Expect(filepath.Join(layer.Path, "conf", "web.xml")).To(BeARegularFile())
+		Expect(filepath.Join(layer.Path, "conf", "tomee.xml")).To(BeARegularFile())
+		Expect(filepath.Join(layer.Path, "conf", "openejb.xml")).To(BeARegularFile())
 		Expect(filepath.Join(layer.Path, "lib", "stub-tomcat-access-logging-support.jar")).To(BeARegularFile())
 		Expect(filepath.Join(layer.Path, "lib", "stub-tomcat-lifecycle-support.jar")).To(BeARegularFile())
 		Expect(filepath.Join(layer.Path, "bin", "stub-tomcat-logging-support.jar")).To(BeARegularFile())
@@ -141,6 +147,10 @@ func testBase(t *testing.T, context spec.G, it spec.S) {
 		Expect(os.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "server.xml"), []byte{}, 0644)).
 			To(Succeed())
 		Expect(os.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "web.xml"), []byte{}, 0644)).
+			To(Succeed())
+		Expect(os.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "tomee.xml"), []byte{}, 0644)).
+			To(Succeed())
+		Expect(os.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "openejb.xml"), []byte{}, 0644)).
 			To(Succeed())
 
 		externalConfigurationDep := libpak.BuildpackDependency{
@@ -203,6 +213,10 @@ func testBase(t *testing.T, context spec.G, it spec.S) {
 			Expect(os.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "server.xml"), []byte{}, 0644)).
 				To(Succeed())
 			Expect(os.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "web.xml"), []byte{}, 0644)).
+				To(Succeed())
+			Expect(os.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "tomee.xml"), []byte{}, 0644)).
+				To(Succeed())
+			Expect(os.WriteFile(filepath.Join(ctx.Buildpack.Path, "resources", "openejb.xml"), []byte{}, 0644)).
 				To(Succeed())
 
 			externalConfigurationDep := libpak.BuildpackDependency{

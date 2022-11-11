@@ -28,7 +28,7 @@ api = "0.7"
     uri = "https://github.com/paketo-buildpacks/apache-tomee/blob/main/LICENSE"
 
 [metadata]
-  include-files = ["LICENSE", "NOTICE", "README.md", "bin/build", "bin/detect", "bin/helper", "bin/main", "buildpack.toml", "resources/context.xml", "resources/logging.properties", "resources/server.xml", "resources/web.xml"]
+  include-files = ["LICENSE", "NOTICE", "README.md", "bin/build", "bin/detect", "bin/helper", "bin/main", "buildpack.toml", "resources/context.xml", "resources/logging.properties", "resources/server.xml", "resources/web.xml", "resources/tomee.xml", "resources/openejb.xml"]
   pre-package = "scripts/build.sh"
 
   [[metadata.configurations]]
