@@ -37,9 +37,12 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 			source string
 		)
 
+		const eventuallyTimeout = time.Second * 30
+
 		it.Before(func() {
 			var err error
 			name, err = occam.RandomName()
+
 			Expect(err).NotTo(HaveOccurred())
 
 			source, err = occam.Source(filepath.Join("testdata"))
@@ -88,10 +91,12 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 				WithEnv(map[string]string{"PORT": "8080"}).
 				WithPublish("8080").
 				WithPublishAll().
+				WithReadOnly().
+				WithMounts("type=bind,source=/tmp,target=/tmp").
 				Execute(image.ID)
 			Expect(err).NotTo(HaveOccurred())
 
-			Eventually(container, time.Second*30).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
+			Eventually(container, eventuallyTimeout).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
 		})
 
 		it("builds on tiny", func() {
@@ -128,10 +133,12 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 				}).
 				WithPublish("8080").
 				WithPublishAll().
+				WithReadOnly().
+				WithMounts("type=bind,source=/tmp,target=/tmp").
 				Execute(image.ID)
 			Expect(err).NotTo(HaveOccurred())
 
-			Eventually(container, time.Second*30).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
+			Eventually(container, eventuallyTimeout).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
 		})
 	})
 }
