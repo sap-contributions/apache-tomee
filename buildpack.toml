@@ -241,14 +241,14 @@ api = "0.7"
       uri = "https://www.apache.org/licenses/"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee-plume:9.0.0-M8:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee-plume:9.0.0-RC1:*:*:*:*:*:*:*"]
     id = "tomee-plume"
     name = "Apache Tomee - Plume"
-    purl = "pkg:generic/apache-tomee@9.0.0-M8"
-    sha256 = "ef49b3fcc7b72886b176f8dd8910608cf82c285a11290b95826a594da14601bb"
+    purl = "pkg:generic/apache-tomee@9.0.0-RC1"
+    sha256 = "36bc8f1cc3c89ad98eb4ca19510e8f3021a4a04150a50e30e0c86eb33cdb9d50"
     stacks = ["*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0-M8/apache-tomee-9.0.0-M8-plume.tar.gz"
-    version = "9.0.0-M8"
+    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0.RC1/apache-tomee-9.0.0.RC1-plume.tar.gz"
+    version = "9.0.0-RC1"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
