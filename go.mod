@@ -6,8 +6,8 @@ require (
 	github.com/BurntSushi/toml v1.2.1
 	github.com/buildpacks/libcnb v1.27.0
 	github.com/heroku/color v0.0.6
-	github.com/onsi/gomega v1.22.1
-	github.com/paketo-buildpacks/libjvm v1.40.0
+	github.com/onsi/gomega v1.24.1
+	github.com/paketo-buildpacks/libjvm v1.41.0
 	github.com/paketo-buildpacks/libpak v1.63.0
 	github.com/paketo-buildpacks/occam v0.13.3
 	github.com/sclevine/spec v1.4.0
@@ -16,7 +16,7 @@ require (
 require (
 	github.com/Azure/go-ansiterm v0.0.0-20210617225240-d185dfc1b5a1 // indirect
 	github.com/ForestEckhardt/freezer v0.0.12 // indirect
-	github.com/Masterminds/semver/v3 v3.1.1 // indirect
+	github.com/Masterminds/semver/v3 v3.2.0 // indirect
 	github.com/Microsoft/go-winio v0.6.0 // indirect
 	github.com/Microsoft/hcsshim v0.9.4 // indirect
 	github.com/cenkalti/backoff/v4 v4.1.3 // indirect
@@ -62,8 +62,8 @@ require (
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
 	go.opencensus.io v0.23.0 // indirect
 	golang.org/x/mod v0.6.0 // indirect
-	golang.org/x/net v0.1.0 // indirect
-	golang.org/x/sys v0.1.0 // indirect
+	golang.org/x/net v0.2.0 // indirect
+	golang.org/x/sys v0.2.0 // indirect
 	golang.org/x/text v0.4.0 // indirect
 	golang.org/x/tools v0.2.0 // indirect
 	google.golang.org/genproto v0.0.0-20221018160656-63c7b68cfc55 // indirect
