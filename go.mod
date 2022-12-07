@@ -7,7 +7,7 @@ require (
 	github.com/buildpacks/libcnb v1.27.0
 	github.com/heroku/color v0.0.6
 	github.com/onsi/gomega v1.24.1
-	github.com/paketo-buildpacks/libjvm v1.40.0
+	github.com/paketo-buildpacks/libjvm v1.41.0
 	github.com/paketo-buildpacks/libpak v1.63.0
 	github.com/paketo-buildpacks/occam v0.13.3
 	github.com/sclevine/spec v1.4.0
@@ -16,7 +16,7 @@ require (
 require (
 	github.com/Azure/go-ansiterm v0.0.0-20210617225240-d185dfc1b5a1 // indirect
 	github.com/ForestEckhardt/freezer v0.0.12 // indirect
-	github.com/Masterminds/semver/v3 v3.1.1 // indirect
+	github.com/Masterminds/semver/v3 v3.2.0 // indirect
 	github.com/Microsoft/go-winio v0.6.0 // indirect
 	github.com/Microsoft/hcsshim v0.9.5 // indirect
 	github.com/cenkalti/backoff/v4 v4.1.3 // indirect
