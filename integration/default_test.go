@@ -139,6 +139,9 @@ func testDefault(t *testing.T, context spec.G, it spec.S) {
 			Expect(err).NotTo(HaveOccurred())
 
 			Eventually(container, eventuallyTimeout).Should(Serve(ContainSubstring("{\"application_status\":\"UP\"}")).OnPort(8080))
+			logs, err = docker.Container.Logs.Execute(container.ID)
+			Expect(err).NotTo(HaveOccurred())
+			Expect(logs.String()).To(ContainSubstring("[ACCESS]"))
 		})
 	})
 }
