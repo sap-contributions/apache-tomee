@@ -199,14 +199,14 @@ api = "0.7"
       uri = "https://www.apache.org/licenses/"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee-microprofile:9.0.0-RC1:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee-microprofile:9.0.0:*:*:*:*:*:*:*"]
     id = "tomee-microprofile"
     name = "Apache Tomee - Microprofile"
-    purl = "pkg:generic/apache-tomee@9.0.0-RC1"
-    sha256 = "f63ce815f6447c82188fee24bc12acbb52e66d61ab406a13c29db23290431762"
+    purl = "pkg:generic/apache-tomee@9.0.0"
+    sha256 = "3b543ecea467945d3deb663e9d987d485fa922fd062ec9b9c6c1af5d124e4123"
     stacks = ["*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0.RC1/apache-tomee-9.0.0.RC1-microprofile.tar.gz"
-    version = "9.0.0-RC1"
+    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0/apache-tomee-9.0.0-microprofile.tar.gz"
+    version = "9.0.0"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
