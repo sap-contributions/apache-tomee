@@ -213,14 +213,14 @@ api = "0.7"
       uri = "https://www.apache.org/licenses/"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee-webprofile:9.0.0-RC1:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee-webprofile:9.0.0:*:*:*:*:*:*:*"]
     id = "tomee-webprofile"
     name = "Apache Tomee - Webprofile"
-    purl = "pkg:generic/apache-tomee@9.0.0-RC1"
-    sha256 = "c5b2c0ba03460cee723f2fc917cfe1e7554e8baef11dd814e034e73815cb9c67"
+    purl = "pkg:generic/apache-tomee@9.0.0"
+    sha256 = "bd2490ef348f757d00fbfd96fee5584eaadf9886d3b0b56c1aac24482469def2"
     stacks = ["*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0.RC1/apache-tomee-9.0.0.RC1-webprofile.tar.gz"
-    version = "9.0.0-RC1"
+    uri = "https://archive.apache.org/dist/tomee/tomee-9.0.0/apache-tomee-9.0.0-webprofile.tar.gz"
+    version = "9.0.0"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
