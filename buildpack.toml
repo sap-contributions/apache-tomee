@@ -143,14 +143,14 @@ api = "0.7"
       uri = "https://www.apache.org/licenses/"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee-microprofile:8.0.13:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee-microprofile:8.0.14:*:*:*:*:*:*:*"]
     id = "tomee-microprofile"
     name = "Apache Tomee - Microprofile"
-    purl = "pkg:generic/apache-tomee@8.0.13"
-    sha256 = "9507615dc0a58c10516913a34a492772b92b587ea0d10b676e7ea440fb6abb46"
+    purl = "pkg:generic/apache-tomee@8.0.14"
+    sha256 = "43d99d3ed219842fe45e614c7fc1b3dec68b85717a182eea25df3c40bd785e02"
     stacks = ["*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-8.0.13/apache-tomee-8.0.13-microprofile.tar.gz"
-    version = "8.0.13"
+    uri = "https://archive.apache.org/dist/tomee/tomee-8.0.14/apache-tomee-8.0.14-microprofile.tar.gz"
+    version = "8.0.14"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
