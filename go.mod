@@ -6,7 +6,7 @@ require (
 	github.com/BurntSushi/toml v1.2.1
 	github.com/buildpacks/libcnb v1.27.0
 	github.com/heroku/color v0.0.6
-	github.com/onsi/gomega v1.27.2
+	github.com/onsi/gomega v1.27.3
 	github.com/paketo-buildpacks/libjvm v1.41.0
 	github.com/paketo-buildpacks/libpak v1.63.0
 	github.com/paketo-buildpacks/occam v0.15.1
@@ -30,7 +30,7 @@ require (
 	github.com/docker/go-units v0.5.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.1 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
-	github.com/golang/protobuf v1.5.2 // indirect
+	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/h2non/filetype v1.1.3 // indirect
