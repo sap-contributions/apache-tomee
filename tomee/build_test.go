@@ -168,9 +168,9 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		Expect(err).NotTo(HaveOccurred())
 
 		Expect(result.Processes).To(ContainElements(
-			libcnb.Process{Type: "task", Command: "bash", Arguments: []string{"catalina.sh", "run"}, Direct: true},
-			libcnb.Process{Type: "tomee", Command: "bash", Arguments: []string{"catalina.sh", "run"}, Direct: true},
-			libcnb.Process{Type: "web", Command: "bash", Arguments: []string{"catalina.sh", "run"}, Direct: true, Default: true},
+			libcnb.Process{Type: "task", Command: "sh", Arguments: []string{"tomee-microprofile/bin/catalina.sh", "run"}, Direct: true},
+			libcnb.Process{Type: "tomee", Command: "sh", Arguments: []string{"tomee-microprofile/bin/catalina.sh", "run"}, Direct: true},
+			libcnb.Process{Type: "web", Command: "sh", Arguments: []string{"tomee-microprofile/bin/catalina.sh", "run"}, Direct: true, Default: true},
 		))
 
 		Expect(result.Layers).To(HaveLen(3))
