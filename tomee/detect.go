@@ -42,14 +42,14 @@ type Detect struct {
 }
 
 func (d Detect) Detect(context libcnb.DetectContext) (libcnb.DetectResult, error) {
-	cr, err := libpak.NewConfigurationResolver(context.Buildpack, nil)
+	cr, err := libpak.NewConfigurationResolver(context.Buildpack, &d.Logger)
 	if err != nil {
 		return libcnb.DetectResult{}, fmt.Errorf("unable to create configuration resolver\n%w", err)
 	}
 
 	appServer, _ := cr.Resolve("BP_JAVA_APP_SERVER")
 	if appServer != "" && appServer != JavaAppServerTomee {
-		d.Logger.Debugf("failed to match requested app server of [%s], buildpack supports [%s]", appServer, JavaAppServerTomee)
+		d.Logger.Infof("SKIPPED: buildpack does not match requested app server of [%s], buildpack supports [%s]", appServer, JavaAppServerTomee)
 		return libcnb.DetectResult{Pass: false}, nil
 	}
 
@@ -59,6 +59,7 @@ func (d Detect) Detect(context libcnb.DetectContext) (libcnb.DetectResult, error
 	}
 
 	if _, ok := m.Get("Main-Class"); ok {
+		d.Logger.Info("SKIPPED: Manifest attribute 'Main-Class' was found")
 		return libcnb.DetectResult{Pass: false}, nil
 	}
 
@@ -85,6 +86,7 @@ func (d Detect) Detect(context libcnb.DetectContext) (libcnb.DetectResult, error
 	if _, err := os.Stat(file); err != nil && !os.IsNotExist(err) {
 		return libcnb.DetectResult{}, fmt.Errorf("unable to stat file %s\n%w", file, err)
 	} else if os.IsNotExist(err) {
+		d.Logger.Info("PASSED: a WEB-INF directory was not found, this is normal when building from source")
 		return result, nil
 	}
 
