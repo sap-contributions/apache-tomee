@@ -7,9 +7,9 @@ require (
 	github.com/buildpacks/libcnb v1.28.0
 	github.com/heroku/color v0.0.6
 	github.com/onsi/gomega v1.27.8
-	github.com/paketo-buildpacks/libjvm v1.43.1
-	github.com/paketo-buildpacks/libpak v1.66.0
-	github.com/paketo-buildpacks/occam v0.16.0
+	github.com/paketo-buildpacks/libjvm v1.43.2
+	github.com/paketo-buildpacks/libpak v1.66.1
+	github.com/paketo-buildpacks/occam v0.17.0
 	github.com/sclevine/spec v1.4.0
 )
 
@@ -57,16 +57,17 @@ require (
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/stretchr/objx v0.5.0 // indirect
 	github.com/stretchr/testify v1.8.4 // indirect
-	github.com/testcontainers/testcontainers-go v0.20.1 // indirect
+	github.com/testcontainers/testcontainers-go v0.21.0 // indirect
 	github.com/ulikunitz/xz v0.5.11 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
+	golang.org/x/exp v0.0.0-20230626212559-97b1e661b5df // indirect
 	golang.org/x/mod v0.11.0 // indirect
 	golang.org/x/net v0.11.0 // indirect
 	golang.org/x/sys v0.9.0 // indirect
 	golang.org/x/text v0.10.0 // indirect
 	golang.org/x/tools v0.10.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20230530153820-e85fd2cbaebc // indirect
-	google.golang.org/grpc v1.56.0 // indirect
-	google.golang.org/protobuf v1.30.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20230628200519-e449d1ea0e82 // indirect
+	google.golang.org/grpc v1.56.1 // indirect
+	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
