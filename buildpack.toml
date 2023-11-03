@@ -151,16 +151,16 @@ api = "0.7"
       uri = "https://www.apache.org/licenses/"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee-microprofile:8.0.15:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee-microprofile:8.0.16:*:*:*:*:*:*:*"]
     id = "tomee-microprofile"
     name = "Apache Tomee - Microprofile"
-    purl = "pkg:generic/apache-tomee@8.0.15"
-    sha256 = "932e902c9dbca70edfe7a8c3f3ecab8512a73c40e9961225e0387c5a3e5c2a17"
-    source = "https://archive.apache.org/dist/tomee/tomee-8.0.15/tomee-project-8.0.15-source-release.zip"
-    source-sha256 = "db0a954efecea325de72552c4de9af6e7e7ab485f94ff5e0d98c34532d1c6326"
+    purl = "pkg:generic/apache-tomee@8.0.16"
+    sha256 = "109395e93e38b537720cea88bda830b6f412541a67917e33f4c17eddb230313d"
+    source = "https://archive.apache.org/dist/tomee/tomee-8.0.16/tomee-project-8.0.16-source-release.zip"
+    source-sha256 = "5b06c47f514a6af03ae043203e6984dc94d9001ac81f7e6367d76fdf8ff23793"
     stacks = ["*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-8.0.15/apache-tomee-8.0.15-microprofile.tar.gz"
-    version = "8.0.15"
+    uri = "https://archive.apache.org/dist/tomee/tomee-8.0.16/apache-tomee-8.0.16-microprofile.tar.gz"
+    version = "8.0.16"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
@@ -183,16 +183,16 @@ api = "0.7"
       uri = "https://www.apache.org/licenses/"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:apache:tomee-plus:8.0.15:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:apache:tomee-plus:8.0.16:*:*:*:*:*:*:*"]
     id = "tomee-plus"
     name = "Apache Tomee - Plus"
-    purl = "pkg:generic/apache-tomee@8.0.15"
-    sha256 = "0837a8c46b5457bad771882d0a1e5d50e9beb8309b38a6feeb465d78fca7a504"
-    source = "https://archive.apache.org/dist/tomee/tomee-8.0.15/tomee-project-8.0.15-source-release.zip"
-    source-sha256 = "db0a954efecea325de72552c4de9af6e7e7ab485f94ff5e0d98c34532d1c6326"
+    purl = "pkg:generic/apache-tomee@8.0.16"
+    sha256 = "842987d6319dc6a21d6690e39e5e006ab3972037ee65a71b8f0cc30f1e9552b3"
+    source = "https://archive.apache.org/dist/tomee/tomee-8.0.16/tomee-project-8.0.16-source-release.zip"
+    source-sha256 = "5b06c47f514a6af03ae043203e6984dc94d9001ac81f7e6367d76fdf8ff23793"
     stacks = ["*"]
-    uri = "https://archive.apache.org/dist/tomee/tomee-8.0.15/apache-tomee-8.0.15-plus.tar.gz"
-    version = "8.0.15"
+    uri = "https://archive.apache.org/dist/tomee/tomee-8.0.16/apache-tomee-8.0.16-plus.tar.gz"
+    version = "8.0.16"
 
     [[metadata.dependencies.licenses]]
       type = "Apache-2.0"
