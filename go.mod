@@ -8,7 +8,7 @@ require (
 	github.com/heroku/color v0.0.6
 	github.com/onsi/gomega v1.30.0
 	github.com/paketo-buildpacks/libjvm v1.44.0
-	github.com/paketo-buildpacks/libpak v1.67.2
+	github.com/paketo-buildpacks/libpak v1.68.0
 	github.com/paketo-buildpacks/occam v0.17.0
 	github.com/sclevine/spec v1.4.0
 )
@@ -21,10 +21,10 @@ require (
 	github.com/Microsoft/go-winio v0.6.1 // indirect
 	github.com/Microsoft/hcsshim v0.11.4 // indirect
 	github.com/cenkalti/backoff/v4 v4.2.1 // indirect
-	github.com/containerd/containerd v1.7.8 // indirect
+	github.com/containerd/containerd v1.7.9 // indirect
 	github.com/containerd/log v0.1.0 // indirect
 	github.com/cpuguy83/dockercfg v0.3.1 // indirect
-	github.com/creack/pty v1.1.20 // indirect
+	github.com/creack/pty v1.1.21 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/distribution/reference v0.5.0 // indirect
 	github.com/docker/distribution v2.8.3+incompatible // indirect
@@ -39,7 +39,7 @@ require (
 	github.com/google/uuid v1.4.0 // indirect
 	github.com/h2non/filetype v1.1.3 // indirect
 	github.com/imdario/mergo v0.3.16 // indirect
-	github.com/klauspost/compress v1.17.2 // indirect
+	github.com/klauspost/compress v1.17.3 // indirect
 	github.com/lufia/plan9stats v0.0.0-20231016141302-07b5767bb0ed // indirect
 	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
